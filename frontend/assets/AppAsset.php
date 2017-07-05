@@ -13,8 +13,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'assets/map/map.css'
     ];
     public $js = [
+        '//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places',
+        'assets/map/map.js',
+        'assets/map/markerclusterer_compiled.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
