@@ -18,7 +18,28 @@ class Realty extends ActiveRecord
      */
     public static function tableName()
     {
-        return '{{f_overhill_realty}}';
+        return '{{%overhill_realty}}';
     }
 
+    public function getPhotos()
+    {
+        return $this->hasMany(Photo::className(), ['realty' => 'id']);
+    }
+
+}
+
+class Photo extends ActiveRecord
+{ 
+	const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    
+   public static function tableName()
+    {
+        return '{{%overhill_realty_photos}}';
+    }
+
+    public function getRealty()
+    {
+        return $this->hasOne(Realty::className(), ['id' => 'realty']);
+    }
 }

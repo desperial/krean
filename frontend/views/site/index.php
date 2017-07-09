@@ -133,6 +133,7 @@ $this->title = 'My Yii Application';
         });
       }
     
+        
 </script>
 
 <!-- BEGIN JIVOSITE CODE {literal} -->
