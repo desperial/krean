@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\base\InvalidParamException;
+use yii\db\ActiveRecord;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -12,6 +13,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\Realty;
 
 /**
  * Site controller
@@ -209,5 +211,10 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function getRealty()
+    {
+        return $this->renderAjax('realty');
     }
 }

@@ -17,7 +17,123 @@ $this->title = 'My Yii Application';
             </div>
         </div>
     </div>
+
+    <div class="overhill-app-right">
+        <a class="overhill-app-right-toggle" href="javascript:void(0)" onclick="overhill.container.list.toggle()" title="Список объявлений"><i class="fa fa-angle-right"></i></a>
+        <div class="overhill-search-ads-container">
+            <form id="overhill-search-ads-form" onsubmit="return false">
+                <div class="overhill-search-ads-basic-container">
+                    <div class="overhill-search-ads-basic-content">
+                        <div class="search-ads-group">
+                            <div class="search-ads-field search-ads-field-text">
+                                <div class="search-ads-legend">Поиск:</div>
+                                <input id="search-ads-field-text" type="text" placeholder="Страна, улица, дом..." />
+                            </div>
+                        </div>
+                        <div class="search-ads-group">
+                            <div class="search-ads-field search-ads-field-price">
+                                <div class="search-ads-legend">Цена (в выбранной вами валюте):</div>
+                                <input id="search-ads-field-price-from" type="text" size="9" value="0" />&nbsp;&mdash;&nbsp;<input id="search-ads-field-price-to" type="text" size="9" value="0" />
+                            </div>
+                            <div class="search-ads-field search-ads-field-area">
+                                <div class="search-ads-legend">Площадь (м²):</div>
+                                <input id="search-ads-field-area-from" type="text" size="9" value="0" />&nbsp;&mdash;&nbsp;<input id="search-ads-field-area-to" type="text" size="9" value="0" />
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="search-ads-group">
+                            <div class="search-ads-field search-ads-field-deal">
+                                <div class="search-ads-field-deal-all">
+                                    <span class="search-ads-label">Все</span><input type="radio" checked="checked" name="deal" value="" onchange="overhill.realty.list.setOption(this.name, this.value)" />
+                                </div>
+                                <div class="search-ads-field-deal-rent">
+                                    <span class="search-ads-label">Снять</span><input type="radio" name="deal" value="rent" onchange="overhill.realty.list.setOption(this.name, this.value)" />
+                                </div>
+                                <div class="search-ads-field-deal-buy">
+                                    <span class="search-ads-label">Купить</span><input type="radio" name="deal" value="buy" onchange="overhill.realty.list.setOption(this.name, this.value)" />
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="search-ads-field search-ads-field-actions">
+                                <div class="search-ads-field-on-show-advanced">
+                                    <a href="javascript:void(0)" onclick="overhill.container.list.toggleAdvanced(this)">Расширенный поиск</a>
+                                </div>
+                                <div class="search-ads-field-on-reset">
+                                    <a href="javascript:void(0)" onclick="overhill.realty.list.restart()">Сбросить настройки</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overhill-search-ads-advanced-container">
+                    <div class="overhill-search-ads-advanced-content">
+                        <div class="search-ads-group">
+                            <div class="search-ads-field search-ads-field-country">
+                                <div class="search-ads-legend">Страна:</div>
+                                <select id="search-ads-container-for-counties" name="country" onchange="overhill.realty.list.setOption(this.name, this.value)" disabled="disabled">
+                                    <option value="" selected="selected">...</option>
+                                </select>
+                            </div>
+                            <div class="search-ads-field search-ads-field-type">
+                                <div class="search-ads-legend">Тип недвижимости:</div>
+                                <select name="type" onchange="overhill.realty.list.setOption(this.name, this.value)">
+                                    <option value="" selected="selected">...</option>
+                                    <option value="residential">Жилой</option>
+                                    <option value="commercial">Коммерческий</option>
+                                </select>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="search-ads-group">
+                            <div class="search-ads-field search-ads-field-view">
+                                <div class="search-ads-legend">Вид недвижимости:</div>
+                                <select name="view" onchange="overhill.realty.list.setOption(this.name, this.value)">
+                                    <option value="" selected="selected">...</option>
+                                    <option value="house">Дом</option>
+                                    <option value="building">Здание</option>
+                                    <option value="land">Земельный участок</option>
+                                    <option value="investment">Инвестиционный проект</option>
+                                    <option value="apartment">Квартира</option>
+                                    <option value="premises">Помещение</option>
+                                    <option value="others">Прочее</option>
+                                    <option value="townhouse">Таунхаус</option>
+                                </select>
+                            </div>
+                            <div class="search-ads-field search-ads-field-group">
+                                <div class="search-ads-legend">Социальная группа:</div>
+                                <select name="group" onchange="overhill.realty.list.setOption(this.name, this.value)">
+                                    <option value="" selected="selected">...</option>
+                                    <option value="primary">Первичная</option>
+                                    <option value="secondary">Вторичная</option>
+                                </select>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="overhill-list-ads-container">
+            <div class="overhill-list-ads-content"></div>
+            <a class="overhill-list-ads-on-more" style="display:none;" href="javascript:overhill.realty.list.unload()">Показать ещё 12 объявлений</a>
+        </div>
+    </div>
 </div>
+
+<script>
+      function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('overhill-map'), {
+          center: {lat: -34.397, lng: 150.644},
+          scrollwheel: true,
+          zoom: 8
+        });
+      }
+    
+</script>
 
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript'>
