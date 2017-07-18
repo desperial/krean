@@ -26,4 +26,15 @@ class RealtyController extends Controller
             'pagination' => $pagination,
         ]);
     }
+    public function actionCoords()
+    {
+        $query = Realty::find();
+
+        $realty = $query->orderBy('create_timestamp')
+            ->all();
+        //\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $this->renderAjax('coords', [
+            'realty' => $realty
+        ]);
+    }
 }
