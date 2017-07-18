@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-<?foreach ($realty as $item): ?>
+<?php foreach ($realty as $item): ?>
         <div class="item ad-from-list-<?=$item->id?>" location:latitude="<?=$item->latitude?>" location:longitude="<?=$item->longitude?>">
 				<div class="item-group-1">
 					<div class="item-data-photo">
