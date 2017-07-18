@@ -1,0 +1,47 @@
+#overhill-map {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #b3d1ff; /* цвет воды */
+}
+
+#overhill-map.blur {
+	-webkit-filter: blur(5px);
+}
+
+/* Этим фиксировался баг, когда элементы управления Google картой
+ * имели проблемы с шириной и высотой, на данный момент такой баг не замечен,
+ * но пусть лучше, это пока останется тут... */
+#overhill-map img, .user-google-map img {
+	max-width: inherit;
+}
+
+/* Оформление текстового поля, которое накладывается поверх Google карты
+ * см. метод createSimpleInstanceOfGoogleMapInModalWindowToGetCoordinatesOnClick() */
+#user-google-map-search-box {
+	width: 400px;
+	height: 32px;
+	margin: 16px 0 0 12px;
+	padding: 0 11px 0 13px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	-moz-border-radius: 2px 0 0 2px;
+	-webkit-border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: 300;
+	font-family: Roboto;
+	text-overflow: ellipsis;
+	outline: none;
+}
+#user-google-map-search-box:focus {
+	border-color: #4d90fe;
+}

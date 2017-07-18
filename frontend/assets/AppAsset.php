@@ -14,13 +14,13 @@ class AppAsset extends AssetBundle
     public $css = [
         //'css/site.css',
         'css/main.css',
-        '../assets/map/map.css',
+        'js/map/map.css',
         'js/scrollbar/jquery.mCustomScrollbar.min.css'
     ];
     public $js = [
-        '../assets/map/map.js',
+        'js/map/map.js',
         '//maps.googleapis.com/maps/api/js?key=AIzaSyCE_Zc_9w7-i_e2lkF7eR3exkN43hKW5hc&callback=initMap&libraries=places', //key AIzaSyBpXjxM_57LlqtTqxK8hDITlcs3BQt2_Rg 
-        '../assets/map/markerclusterer_compiled.js',
+        'js/map/markerclusterer_compiled.js',
         'js/realty.js',
         'js/scrollbar/jquery.mCustomScrollbar.concat.min.js'
     ];
