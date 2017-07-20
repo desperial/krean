@@ -2,9 +2,9 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Krean.ru - вся недвижимость, в одном месте!';
 ?>
-<div class="site-index">
+<div class="overhill-app">
     <div class="overhill-app-left">
         <div id="overhill-map"></div>
         <div id="overhill-page"></div>
@@ -126,11 +126,7 @@ $this->title = 'My Yii Application';
 <script>
       function initMap() {
         // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('overhill-map'), {
-          center: {lat: -34.397, lng: 150.644},
-          scrollwheel: true,
-          zoom: 8
-        });
+        
       }
     
         

@@ -1,4 +1,28 @@
+var markerIcon = new google.maps.MarkerImage('js/map/marker.png?v3', new google.maps.Size(32,50));
+var overhillMap = new google.maps.Map(document.getElementById('overhill-map'), {
+          	center: {lat: 50.0456224, lng: 2.6595129},
+          	scrollwheel: true,
+         	zoom: 4,
+			mapTypeControl: true,
+          	mapTypeControlOptions: {
+              style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+              position: google.maps.ControlPosition.TOP_CENTER
+          },
+          zoomControl: true,
+          zoomControlOptions: {
+              position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          scaleControl: true,
+          streetViewControl: true,
+          streetViewControlOptions: {
+              position: google.maps.ControlPosition.LEFT_TOP
+          },
+          fullscreenControl: true
+        });
+
 $(document).ready(function(){
+
+	
 	$.ajax({
 	    url:"/realty/index"
 	}).done(function(data){
@@ -13,13 +37,16 @@ $(document).ready(function(){
 	}).done(function(data){
 		var location = $.parseJSON(data); 
 		var locations = location.obj;
-	   	console.log(locations);
+		console.log(locations);
+	   	
+
 	   	var markers = locations.map(function(location, i) {
           return new google.maps.Marker({
-            position: location.obj
+            position: location,
+			icon: markerIcon
           });
         });
-	   	var markerCluster = new MarkerClusterer(map, markers,
+	   	var markerCluster = new MarkerClusterer(overhillMap, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 	});
 });

@@ -36,7 +36,7 @@ AppAsset::register($this);
                 'brandLabel' => 'Krean',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
+                    'class' => 'menu',
                 ],
             ]);
             $menuItems = [
@@ -59,11 +59,11 @@ AppAsset::register($this);
                     . '</li>';
             }
             echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
             NavBar::end();
             ?>
+            <div class="clear"></div>
         </div>
     </div>
     <div class="container">

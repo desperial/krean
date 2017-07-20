@@ -22,12 +22,14 @@ class AppAsset extends AssetBundle
         '//maps.googleapis.com/maps/api/js?key=AIzaSyCE_Zc_9w7-i_e2lkF7eR3exkN43hKW5hc&callback=initMap&libraries=places', //key AIzaSyBpXjxM_57LlqtTqxK8hDITlcs3BQt2_Rg 
         'js/map/markerclusterer_compiled.js',
         'js/realty.js',
+        'js/common.js',
         'js/scrollbar/jquery.mCustomScrollbar.concat.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\web\jQueryAsset',
+        'rmrevin\yii\fontawesome\AssetBundle'
     ];
     //public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
 }

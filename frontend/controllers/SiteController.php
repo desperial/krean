@@ -213,8 +213,4 @@ class SiteController extends Controller
         ]);
     }
 
-    public function getRealty()
-    {
-        return $this->renderAjax('realty');
-    }
 }

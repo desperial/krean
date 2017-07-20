@@ -21,6 +21,7 @@ class RealtyController extends Controller
             ->limit($pagination->limit)
             ->all();
 
+        $realty = textMapping($realty);
         return $this->renderAjax('index', [
             'realty' => $realty,
             'pagination' => $pagination,
@@ -36,5 +37,10 @@ class RealtyController extends Controller
         return $this->renderAjax('coords', [
             'realty' => $realty
         ]);
+    }
+
+    private function textMapping()
+    {
+        
     }
 }
