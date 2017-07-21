@@ -17,7 +17,7 @@ use yii\widgets\LinkPager;
 				<div class="item-group-3">
 					<div class="item-data-location">
 						<div class="item-data-location-country">
-							<a href="javascript:void(0)" onclick="overhill.realty.getById(<?=$item->id?>)" title="Открыть объявление">%view_str%, %country_name%</a>
+							<a href="javascript:void(0)" onclick="overhill.realty.getById(<?=$item->id?>)" title="Открыть объявление"><?=$item['view']?>, %country_name%</a>
 						</div>
 						<div class="item-data-location-address">
 							<a href="javascript:void(0)" onclick="overhillMap.to(<?=$item->latitude?>, <?=$item->longitude?>)" title="Показать на карте"><?=$item->address?></a>

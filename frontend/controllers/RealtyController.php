@@ -21,7 +21,7 @@ class RealtyController extends Controller
             ->limit($pagination->limit)
             ->all();
 
-        $realty = textMapping($realty);
+        $realty = $this->textMapping($realty);
         return $this->renderAjax('index', [
             'realty' => $realty,
             'pagination' => $pagination,
@@ -39,8 +39,37 @@ class RealtyController extends Controller
         ]);
     }
 
-    private function textMapping()
+    private function textMapping($realty)
     {
-        
+        $mappingArray = [
+            "deal" => [
+                "buy" => "Продажа", 
+                "rent" => "аренда"
+            ],
+            "type" => [
+                "residential" => "Жилой",
+                "commercial" => "Коммерческий"
+            ],
+            "view" => [
+                "house" => "Дом",
+                "building"  => "Здание",
+                "land"  => "Земельный участок",
+                "investment"    => "Инвестиционный проект",
+                "apartment" => "Квартира",
+                "premises"  => "Помещение",
+                "others"    => "Прочее",
+                "townhouse" => "Таунхаус"
+            ],
+            "group" => [
+                "primary"   => "Первичная",
+                "secondary" => "Вторичная"
+            ]
+        ];
+        foreach ($realty as $item) {
+            foreach ($mappingArray as $key=>$field) {
+                $item[$key] = $field[$item[$key]];
+            }
+        }
+        return $realty;
     }
 }
