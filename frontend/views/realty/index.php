@@ -2,14 +2,13 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
-// Начало блока Pjax
-Pjax::begin();
 ?>
+<?php Pjax::begin(['enablePushState' => false, 'linkSelector' => '.realtyPage', 'scrollTo' => true]);  ?>
 <?php foreach ($realty as $item): ?>
         <div class="item ad-from-list-<?=$item->id?>" location:latitude="<?=$item->latitude?>" location:longitude="<?=$item->longitude?>">
 				<div class="item-group-1">
 					<div class="item-data-photo">
-						<a href="javascript:void(0)" onclick="overhill.realty.getById(<?=$item->id?>)" title="Открыть объявление">
+						<a href="javascript:void(0)" onclick="realty.getById(<?=$item->id?>)" title="Открыть объявление">
 						<img width="170" height="100" src="/upload/overhill/realty/<?=$item->photos[0]->filename?>" />
 						</a>
 					</div>
@@ -58,6 +57,5 @@ Pjax::begin();
 
 <?endforeach; ?>
 
-<?= LinkPager::widget(['pagination' => $pagination]);
-Pjax::end();    
-?>
+<?= LinkPager::widget(['pagination' => $pagination, 'linkOptions' => ['class' => 'realtyPage']]) ?>
+<?php Pjax::end(); ?>
