@@ -18,9 +18,9 @@ class AppAsset extends AssetBundle
         'js/scrollbar/jquery.mCustomScrollbar.min.css'
     ];
     public $js = [
-        'js/map/map.js',
         '//maps.googleapis.com/maps/api/js?key=AIzaSyCE_Zc_9w7-i_e2lkF7eR3exkN43hKW5hc&callback=initMap&libraries=places', //key AIzaSyBpXjxM_57LlqtTqxK8hDITlcs3BQt2_Rg 
         'js/map/markerclusterer_compiled.js',
+        'js/new_map.js',
         'js/realty.js',
         'js/common.js',
         'js/scrollbar/jquery.mCustomScrollbar.concat.min.js'

@@ -1,5 +1,5 @@
 var markerIcon = new google.maps.MarkerImage('js/map/marker.png?v3', new google.maps.Size(32,50));
-var overhillMap = new google.maps.Map(document.getElementById('overhill-map'), {
+/*var overhillMap = new google.maps.Map(document.getElementById('overhill-map'), {
           	center: {lat: 50.0456224, lng: 2.6595129},
           	scrollwheel: true,
          	zoom: 4,
@@ -19,7 +19,7 @@ var overhillMap = new google.maps.Map(document.getElementById('overhill-map'), {
           },
           fullscreenControl: true
         });
-
+*/
 $(document).ready(function(){
 
 	
@@ -37,8 +37,7 @@ $(document).ready(function(){
 	}).done(function(data){
 		var location = $.parseJSON(data); 
 		var locations = location.obj;
-		console.log(locations);
-	   	
+	   	overhillMap.init();
 
 	   	var markers = locations.map(function(location, i) {
           return new google.maps.Marker({
@@ -46,7 +45,7 @@ $(document).ready(function(){
 			icon: markerIcon
           });
         });
-	   	var markerCluster = new MarkerClusterer(overhillMap, markers,
+	   	var markerCluster = new MarkerClusterer(overhillMap.getMap(), markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 	});
 });

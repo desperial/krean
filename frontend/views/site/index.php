@@ -121,6 +121,8 @@ $this->title = 'Krean.ru - вся недвижимость, в одном мес
             <a class="overhill-list-ads-on-more" style="display:none;" href="javascript:overhill.realty.list.unload()">Показать ещё 12 объявлений</a>
         </div>
     </div>
+    <div class="overhill-ad-container">
+    </div>
 </div>
 
 <script>
