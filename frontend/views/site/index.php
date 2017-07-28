@@ -121,15 +121,19 @@ $this->title = 'Krean.ru - вся недвижимость, в одном мес
             <a class="overhill-list-ads-on-more" style="display:none;" href="javascript:overhill.realty.list.unload()">Показать ещё 12 объявлений</a>
         </div>
     </div>
+    <div class="overhill-ad-container">
+        <div class="overhill-ad-wrapper">
+            <div class="overhill-ad-content"></div>
+            <a class="overhill-ad-close" href="javascript:void(0)" onclick="overhill.container.show.close()" title="Закрыть страницу"></a>
+        </div>
+        <a class="overhill-ad-toggle" href="javascript:void(0)" onclick="overhill.container.show.toggle()" title="Объявление"><i class="fa fa-angle-right"></i></a>
+    </div>
 </div>
 
 <script>
       function initMap() {
-        // Create a map object and specify the DOM element for display.
         
       }
-    
-        
 </script>
 
 <!-- BEGIN JIVOSITE CODE {literal} -->

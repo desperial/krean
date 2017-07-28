@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use yii\web\Controller;
 use yii\data\Pagination;
+use yii\web\Request;
 use frontend\models\Realty;
 
 class RealtyController extends Controller
@@ -27,6 +28,19 @@ class RealtyController extends Controller
             'pagination' => $pagination,
         ]);
     }
+
+    public function actionObject()
+    {
+        $id = \Yii::$app->request->get('id');
+        $realty = Realty::findAll($id);
+
+
+        $realty = $this->textMapping($realty);
+        return $this->renderAjax('object', [
+            'realty' => $realty
+        ]);
+    }
+
     public function actionCoords()
     {
         $query = Realty::find();
