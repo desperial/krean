@@ -146,11 +146,100 @@ var overhillMap = new (function() {
 					// {featureType: 'water', stylers: [{color: '#d3f0ff'}, {saturation: 0}]}
 				]
 			});
+
+
 		}
 		return self;
 	}
+
 	this.getMap = function()
 	{
 		return googleMapObject;
 	}
+
+	this.to = function(latitude, longitude, zoom)
+	{
+		googleMapObject.setCenter(new google.maps.LatLng(latitude, longitude));
+		
+		googleMapObject.setZoom(zoom || 18);
+		
+		return self;
+	};
+
+	/**
+	 * Запуск анимации маркера
+	 *
+	 * @param   int      realty
+	 * @param   int      animation
+	 *
+	 * @access  public
+	 * @return  void
+	 */
+	this.startMarkerAnimation = function(realty, animation)
+	{
+		if (/^[0-9]{1,11}$/.test(realty))
+		{
+			if (googleMapMarkers[realty] !== undefined)
+			{
+				googleMapMarkers[realty].setAnimation(animation || google.maps.Animation.BOUNCE);
+			}
+		}
+	};
+	
+	/**
+	 * Остановка анимации маркера
+	 *
+	 * @param   int      realty
+	 *
+	 * @access  public
+	 * @return  void
+	 */
+	this.stopMarkerAnimation = function(realty)
+	{
+		if (/^[0-9]{1,11}$/.test(realty))
+		{
+			if (googleMapMarkers[realty] !== undefined)
+			{
+				googleMapMarkers[realty].setAnimation(null);
+			}
+		}
+	};
+
+	
+	/**
+	 * Деструктор Google карты
+	 *
+	 * @access  public
+	 * @return  object
+	 */
+	this.destruct = function()
+	{
+		if (googleMapObject !== null)
+		{
+			// Удаление всех событий
+			google.maps.event.clearInstanceListeners(window);
+			google.maps.event.clearInstanceListeners(document);
+			google.maps.event.clearInstanceListeners(googleMapContainer);
+			
+			// Удаление всех меток в кластере
+			googleMapMarkersClusterer.clearMarkers();
+			
+			// Освобождение памяти
+			googleMapObject = googleMapContainer = googleMapMarkersClusterer = null;
+		}
+		
+		return self;
+	};
+	
+	/**
+	 * Перезагрузка Google карты
+	 *
+	 * @access  public
+	 * @return  object
+	 */
+	this.restart = function()
+	{
+		return self.destruct().construct();
+	};
+	
 });

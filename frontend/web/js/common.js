@@ -1,5 +1,14 @@
 var overhill =
 {
+	// Время последней активности клиента
+	lastClientActivity: 0,
+
+	// Позиция курсора
+	mouseX: 0, mouseY: 0,
+
+	// Выгруженные страны
+	usedCountries: {},
+
 	container:
 	{
 		list:
@@ -73,7 +82,8 @@ var overhill =
 		open: function(callback)
 		{
 			var container = jQuery('.overhill-ad-container');
-
+			container.attr('condition', 'show');
+			container.find('.overhill-ad-toggle .fa').removeClass('fa-angle-left').addClass('fa-angle-right');
 			container.show(0).animate({right: 0}, function()
 			{
 				container.find('.overhill-ad-wrapper').mCustomScrollbar({theme: 'rounded-dark', scrollButtons: {enable: true, scrollAmount: 50}, mouseWheel: {scrollAmount: 300}});
@@ -122,115 +132,6 @@ var overhill =
 			}
 		},
 
-		template: '\
-		<div class="item">\
-			<div class="item-left">\
-				<div class="item-photos">\
-					%photos%\
-				</div>\
-				<div class="seller-ads">\
-					<div class="seller-ads-header">Продавец</div>\
-					<div class="seller-ads-contact-name"><i class="fa fa-user"></i>&nbsp;&nbsp;%user_name%</div>\
-					<div class="seller-ads-contact-feedback"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="overhillRealty.service.feedback(this, %id%)">Связаться с продавцом</a></div>\
-					<div class="seller-ads-contact-phone">\
-						<a href="javascript:void(0)" onclick="overhillRealty.service.requestPhone(%id%, this)" title="Показать номер телефона продавца">%user_contact_phone%</a>\
-					</div>\
-					<div class="seller-ads-note">Пожалуйста, сообщите продавцу,<br/>что нашли это объявление на Krean.ru</div>\
-				</div>\
-				<div class="google-streetview"></div>\
-				<div class="similar-ads">\
-					<div class="similar-ads-header">Похожие объявления</div>\
-					<div class="similar-ads-list"></div>\
-				</div>\
-				<div class="banner" style="display:none">\
-					<img src="' + 'web/upload/test-001.png?v2' + '" width="350" height="254" />\
-				</div>\
-			</div>\
-			<div class="item-right">\
-				<div class="item-header">\
-					<div class="item-header-title">%view_str%, %country_name%</div>\
-					<div class="item-header-address">\
-						<a href="javascript:void(0)" onclick="overhillMap.to(%latitude%, %longitude%)" title="Показать на карте">%address%</a>\
-					</div>\
-				</div>\
-				<div class="item-data">\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Цена</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%price% %formated_currency% %deal_suffix%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Общая площадь</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%area% м²</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Цена за квадратный метр</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%price_square_meter% %formated_currency%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Вид сделки</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%deal_str%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Тип объекта</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%type_str%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Социальная группа объекта</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%group_str%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Номер объявления</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%id%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Дата создания</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%date_create%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Дата обновления</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%date_update%</div>\
-					</div>\
-					<div class="clear"></div>\
-					<div class="item-data-list-left">\
-						<div class="item-data-list-label">Количество просмотров</div>\
-					</div>\
-					<div class="item-data-list-right">\
-						<div class="item-data-list-label">%shows%</div>\
-					</div>\
-					<div class="clear"></div>\
-				</div>\
-				<div class="item-description">%description%</div>\
-			</div>\
-			<div class="clear"></div>\
-		</div>\
-		',
-
 		templateSimilar: '\
 		<div class="similar-ad">\
 			<div class="similar-ad-photo">\
@@ -263,5 +164,103 @@ var overhill =
 		});
 
 		return container;
+	},
+
+	bottomTabsControl: function(o)
+	{
+		o = jQuery(o);
+		o.parent().find('a.toggle').removeClass('active');
+		o.addClass('active');
+
+		var a = jQuery('.overhill-app-tabs .overhill-app-tabs-box'),
+			b = jQuery('.overhill-app-tabs .overhill-app-tabs-box .tab'),
+			c = jQuery('.overhill-app-tabs .overhill-app-tabs-box .tab-' + o.attr('rel'));
+
+		if (c.hasClass('active')) {
+			a.slideToggle();
+			return;
+		}
+		else if(! a.is(':visible')) {
+			a.slideDown();
+		}
+
+		b.removeClass('active');
+		c.addClass('active');
+
+		b.hide(0);
+		c.show(0);
+	},
+
+	toolbox:
+	{
+		// Обрезка изображения на лету используя алгоритм компонента "Resizer"
+		resize: function(img, width, height)
+		{
+			img = img.split('.'); ext = img.pop(); return [img.join('.'), [width, height].join('x'), ext].join('.');
+		},
+
+		// Получение символа валюты по идентификатору
+		currencyFormat: function(id)
+		{
+			return {RUR: '<span class="ruble">P</span>', EUR: '€', USD: '$'}[id] || null;
+		},
+
+		// Разделение числа по разрядам, форматирование
+		numberFormat: function(v, n, c, s)
+		{
+			var x;
+			var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')';
+			var num = ($.type(v) === "string") ? v.replace(/\s+/g, '') : v;
+			num = parseFloat(num).toFixed(Math.max(0, ~~n));
+
+			return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+		},
+
+		// Форматирование номера телефона
+		phoneFormat: function(p)
+		{
+			if (p !== null)
+			{
+				var pre = (p.indexOf('+')===0) ? p.substr(0, 2) : p.substr(0, 1);
+				var phone = p.substr(p.length-7, 3)+'-'+p.substr(p.length-4, 2)+'-'+p.substr(p.length-2)
+				var code = p.substr(pre.length, p.length-phone.length);
+				return pre+' '+code+' '+phone;
+			}
+		},
+
+		time: function()
+		{
+			return Math.floor(new Date().getTime() / 1000);
+		}
 	}
-}
+};
+
+overhill.lastClientActivity = overhill.toolbox.time();
+
+jQuery(document).on('mousemove', function(event)
+{
+	overhill.lastClientActivity = overhill.toolbox.time();
+
+	overhill.mouseX = event.pageX;
+	overhill.mouseY = event.pageY;
+});
+
+// Альтернатива jQuery метода .on(),
+// но использует установленную задержку в микросекундах
+// @see http://api.jquery.com/on/
+jQuery.fn.onDelay = function(name, time, callback)
+{
+	var timer = null;
+
+	return this.on(name, function(element)
+	{
+		clearTimeout(timer);
+
+		timer = setTimeout(function()
+		{
+			callback(jQuery(element.target));
+		},
+
+		time);
+	});
+};

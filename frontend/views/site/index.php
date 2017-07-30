@@ -124,9 +124,9 @@ $this->title = 'Krean.ru - вся недвижимость, в одном мес
     <div class="overhill-ad-container">
         <div class="overhill-ad-wrapper">
             <div class="overhill-ad-content"></div>
-            <a class="overhill-ad-close" href="javascript:void(0)" onclick="overhill.container.show.close()" title="Закрыть страницу"></a>
+            <a class="overhill-ad-close" href="javascript:void(0)" onclick="overhill.show.close()" title="Закрыть страницу"></a>
         </div>
-        <a class="overhill-ad-toggle" href="javascript:void(0)" onclick="overhill.container.show.toggle()" title="Объявление"><i class="fa fa-angle-right"></i></a>
+        <a class="overhill-ad-toggle" href="javascript:void(0)" onclick="overhill.show.toggle()" title="Объявление"><i class="fa fa-angle-right"></i></a>
     </div>
 </div>
 

@@ -41,6 +41,73 @@ var realty = new (function()
 			});
 		});
 	};
+
+	this.vip = {};
+	
+	this.vip.unload = function(container)
+	{
+		container = $(container);
+		
+		var count = 0;
+		
+		var unloader = function()
+		{
+			// С момента последней активности посетителя должно пройти не более одной минуты
+			if (overhill.lastClientActivity > overhill.toolbox.time() - 65)
+			{
+				// Контейнер для привилегированных объявлений должен быть виден
+				if (container.is(':visible'))
+				{
+					// Расчет количества выгружаемых привилегированных объявлений которые могут поместиться в контейнере
+					count = Math.floor(container.width() / (180 + 10));
+					
+					// Необходимость выгрузки привилегированных объявлений
+					if (count > 0)
+					{
+						// Выгрузка привилегированных объявлений
+						$.get('/realty/vip', {count:count}, function(ads)
+						{
+							if (ads.length === 0)
+							{
+								clearInterval(updater);
+								
+								return;
+							}
+							
+							container.empty();
+							
+							for (var i = 0; i < ads.length; i++)
+							{
+								if (ads[i]['photo'] === null)
+								{
+									ads[i]['photo'] = '0.png';
+								}
+								
+								ads[i]['photo'] = fenric.url('/web/upload/overhill/realty/' + overhill.toolbox.resize(ads[i]['photo'], 180, 140));
+								
+								container.append('\
+								<div class="vip-ad-box">\
+									<img width="180" height="140" src="' + ads[i]['photo'] + '" />\
+									<div class="vip-ad-box-overlay" onclick="overhill.realty.getById(' + ads[i]['id'] + ')"></div>\
+									<div class="vip-ad-tool">\
+										<a class="to-map" href="javascript:void(0)" title="Просмотреть на карте" onclick="overhillMap.to(' + ads[i]['latitude'] + ', ' + ads[i]['longitude'] + ')"><i class="fa fa-map-marker"></i></a>\
+									</div>\
+									<div class="vip-ad-price">\
+										<span>' + ads[i]['price'] + ' ' + self.toolbox.convertCurrencyToFaIcon(ads[i]['currency']) + '</span>\
+									</div>\
+									<div class="vip-ad-info" onclick="overhill.realty.getById(' + ads[i]['id'] + ')">' + ads[i]['address'] + '</div>\
+								</div>');
+							}
+						});
+					}
+				}
+			}
+		};
+		
+		unloader();
+		
+		var updater = setInterval(unloader, 20000);
+	};
 });
 $(document).ready(function(){
 	$.ajax({
@@ -60,10 +127,14 @@ $(document).ready(function(){
 	   	overhillMap.init();
 
 	   	var markers = locations.map(function(location, i) {
-          return new google.maps.Marker({
-            position: location,
+          var marker = new google.maps.Marker({
+            position: {"lat":location.lat, "lng":location.lng},
 			icon: markerIcon
           });
+			marker.addListener('click', function() {
+	          realty.getById(location.id);
+	        });
+			return marker;
         });
 	   	var markerCluster = new MarkerClusterer(overhillMap.getMap(), markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});

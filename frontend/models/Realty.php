@@ -26,9 +26,19 @@ class Realty extends ActiveRecord
         return $this->hasMany(Photo::className(), ['realty' => 'id']);
     }
 
-    public function getUser()
+    public function getUsers()
     {
         return $this->hasOne(User::className(), ['id' => 'user']);
+    }
+
+    public function getCountries()
+    {
+        return $this->hasOne(Country::className(), ['code' => 'country']);
+    }
+
+    public function getDescriptions()
+    {
+        return $this->hasOne(Description::className(), ['realty' => 'id']);
     }
 
 }
@@ -62,5 +72,37 @@ class User extends ActiveRecord
     public function getRealty()
     {
         return $this->hasMany(Realty::className(), ['user' => 'id']);
+    }
+}
+
+class Country extends ActiveRecord
+{ 
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    
+   public static function tableName()
+    {
+        return '{{%overhill_countries}}';
+    }
+
+    public function getRealty()
+    {
+        return $this->hasMany(Realty::className(), ['country' => 'code']);
+    }
+}
+
+class Description extends ActiveRecord
+{ 
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
+    
+   public static function tableName()
+    {
+        return '{{%overhill_realty_descriptions}}';
+    }
+
+    public function getRealty()
+    {
+        return $this->hasOne(Realty::className(), ['id' => 'realty']);
     }
 }

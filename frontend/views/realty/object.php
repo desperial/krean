@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use himiklab\colorbox\Colorbox;
+setlocale(LC_TIME,'ru_RU');
 ?>
 <?php foreach ($realty as $item): ?>
 <div class="item">
@@ -35,10 +36,10 @@ use himiklab\colorbox\Colorbox;
 		</div>
 		<div class="seller-ads">
 			<div class="seller-ads-header">Продавец</div>
-			<div class="seller-ads-contact-name"><i class="fa fa-user"></i>&nbsp;&nbsp;<?=$item->user['name'];?></div>
+			<div class="seller-ads-contact-name"><i class="fa fa-user"></i>&nbsp;&nbsp;<?=$item->users['name'];?></div>
 			<div class="seller-ads-contact-feedback"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="overhillRealty.service.feedback(this, <?=$item->id?>)">Связаться с продавцом</a></div>
 			<div class="seller-ads-contact-phone">
-				<a href="javascript:void(0)" onclick="overhillRealty.service.requestPhone(<?=$item->id?>, this)" title="Показать номер телефона продавца">%user_contact_phone%</a>
+				<a href="javascript:void(0)" onclick="overhillRealty.service.requestPhone(<?=$item->id?>, this)" title="Показать номер телефона продавца"><?=$item->users->contact_phone?></a>
 			</div>
 			<div class="seller-ads-note">Пожалуйста, сообщите продавцу,<br/>что нашли это объявление на Krean.ru</div>
 		</div>
@@ -48,12 +49,12 @@ use himiklab\colorbox\Colorbox;
 			<div class="similar-ads-list"></div>
 		</div>
 		<div class="banner" style="display:none">
-			<img src="' + fenric.url('web/upload/test-001.png?v2') + '" width="350" height="254" />
+			<img src="web/upload/test-001.png?v2" width="350" height="254" />
 		</div>
 	</div>
 	<div class="item-right">
 		<div class="item-header">
-			<div class="item-header-title"><?=$item['view']?>, %country_name%</div>
+			<div class="item-header-title"><?=$item['view']?>, <?=$item->countries['name'];?></div>
 			<div class="item-header-address">
 				<a href="javascript:void(0)" onclick="overhillMap.to(<?=$item->latitude?>, <?=$item->longitude?>)" title="Показать на карте"><?=$item->address?></a>
 			</div>
@@ -63,74 +64,89 @@ use himiklab\colorbox\Colorbox;
 				<div class="item-data-list-label">Цена</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label"><?=$item->price?> <?=$item->currency?> %deal_suffix%</div>
+				<div class="item-data-list-label"><?=number_format ($item->price,0,"."," ")?> 
+				<?php 
+					if ($item->currency == "RUR")
+						echo '<i class="fa fa-rub"></i>';
+					elseif ($item->currency == "EUR")
+						echo '<i class="fa fa-eur"></i>';
+					elseif ($item->currency == "USD")
+						echo '<i class="fa fa-usd"></i>';
+				?>  <?=$item->deal == "аренда" ? "в месяц" : ""?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Общая площадь</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%area% м²</div>
+				<div class="item-data-list-label"><?=$item->area?> м²</div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Цена за квадратный метр</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%price_square_meter% %formated_currency%</div>
+				<div class="item-data-list-label"><?=number_format($item->price / $item->area, 2, '.', ' ')?> <?php 
+					if ($item->currency == "RUR")
+						echo '<i class="fa fa-rub"></i>';
+					elseif ($item->currency == "EUR")
+						echo '<i class="fa fa-eur"></i>';
+					elseif ($item->currency == "USD")
+						echo '<i class="fa fa-usd"></i>';
+				?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Вид сделки</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%deal_str%</div>
+				<div class="item-data-list-label"><?=$item->deal?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Тип объекта</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%type_str%</div>
+				<div class="item-data-list-label"><?=$item->view?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Социальная группа объекта</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%group_str%</div>
+				<div class="item-data-list-label"><?=$item->group?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Номер объявления</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%id%</div>
+				<div class="item-data-list-label"><?=$item->id?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Дата создания</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%date_create%</div>
+				<div class="item-data-list-label"><?=date("d.m.Y H:i", $item->create_timestamp );?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Дата обновления</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%date_update%</div>
+				<div class="item-data-list-label"><?=$item->update_timestamp ? date("d.m.Y H:i", $item->update_timestamp ) : date("d.m.Y H:i", $item->create_timestamp );?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
 				<div class="item-data-list-label">Количество просмотров</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label">%shows%</div>
+				<div class="item-data-list-label"><?=$item->shows?></div>
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="item-description">%description%</div>
+		<div class="item-description"><?=$item->descriptions->description?></div>
 	</div>
 	<div class="clear"></div>
 </div>

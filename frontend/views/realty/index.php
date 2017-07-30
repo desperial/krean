@@ -19,16 +19,32 @@ use yii\widgets\Pjax;
 				<div class="item-group-3">
 					<div class="item-data-location">
 						<div class="item-data-location-country">
-							<a href="javascript:void(0)" onclick="overhill.realty.getById(<?=$item->id?>)" title="Открыть объявление"><?=$item['view']?>, %country_name%</a>
+							<a href="javascript:void(0)" onclick="realty.getById(<?=$item->id?>)" title="Открыть объявление"><?=$item['view']?>, <?=$item->countries['name'];?></a>
 						</div>
 						<div class="item-data-location-address">
 							<a href="javascript:void(0)" onclick="overhillMap.to(<?=$item->latitude?>, <?=$item->longitude?>)" title="Показать на карте"><?=$item->address?></a>
 						</div>
 					</div>
 					<div class="item-data-info">
-						<div class="item-data-info-price"><span class="number"><?=$item->price?></span> <?=$item->currency?> <span class="note">%deal_suffix%</span></div>
+						<div class="item-data-info-price"><span class="number"><?=number_format ($item->price,0,"."," ")?></span> 
+						<?php 
+							if ($item->currency == "RUR")
+								echo '<i class="fa fa-rub"></i>';
+							elseif ($item->currency == "EUR")
+								echo '<i class="fa fa-eur"></i>';
+							elseif ($item->currency == "USD")
+								echo '<i class="fa fa-usd"></i>';
+						?> 
+						<span class="note"><?=$item->deal == "аренда" ? "в месяц" : ""?></span></div>
 						<div class="item-data-info-area"><span class="number"><?=$item->area?></span> м²</div>
-						<!--<div class="item-data-info-price-per-meter"><span class="number">%price_square_meter%</span> %formated_currency%/м²</div>-->
+						<div class="item-data-info-price-per-meter"><span class="number"><?=number_format($item->price / $item->area, 2, '.', ' ')?></span> <?php 
+					if ($item->currency == "RUR")
+						echo '<i class="fa fa-rub"></i>';
+					elseif ($item->currency == "EUR")
+						echo '<i class="fa fa-eur"></i>';
+					elseif ($item->currency == "USD")
+						echo '<i class="fa fa-usd"></i>';
+				?>/м²</div>
 						<div class="clear"></div>
 					</div>
 				</div>

@@ -29,6 +29,20 @@ class RealtyController extends Controller
         ]);
     }
 
+    public function actionVip()
+    {
+        $count = \Yii::$app->request->get('count');
+        $query = Realty::find();
+
+        $realty = $query->orderBy('vip_shows DESC')
+            ->all();
+
+        $realty = $this->textMapping($realty);
+        return $this->renderAjax('vip', [
+            'realty' => $realty
+        ]);
+    }
+
     public function actionObject()
     {
         $id = \Yii::$app->request->get('id');
@@ -83,6 +97,8 @@ class RealtyController extends Controller
             foreach ($mappingArray as $key=>$field) {
                 $item[$key] = $field[$item[$key]];
             }
+            $item->users->contact_phone = substr($item->users->contact_phone, 0, strlen($item->users->contact_phone) -
+                 4) . 'XXXX';
         }
         return $realty;
     }
