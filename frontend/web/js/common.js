@@ -264,3 +264,5 @@ jQuery.fn.onDelay = function(name, time, callback)
 		time);
 	});
 };
+
+realty.vip.unload('#overhill-vip-ads');

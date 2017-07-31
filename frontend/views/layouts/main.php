@@ -25,55 +25,77 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
     <div class="overhill-header">
         <div class="overhill-header-left">
             <div class="logo">
                 <a href="javascript:void(0)" onclick="overhill.reload()"></a>
             </div>
-            <?php
-            NavBar::begin([
-                'brandLabel' => 'Krean',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'menu',
-                ],
-            ]);
-            $menuItems = [
-                ['label' => 'Главная', 'url' => ['/site/index']],
-                ['label' => 'Валюта', 'url' => ['/site/about']],
-                ['label' => 'Страны', 'url' => ['/site/contact']],
-                ['label' => 'Статьи', 'url' => ['/site/contact']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                //$menuItems[] = ['label' => 'Зарегистрироваться', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Вход для продавцов', 'url' => ['/site/login']];
-            } else {
-                $menuItems[] = '<li>'
-                    . Html::beginForm(['/site/logout'], 'post')
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->email . ')',
-                        ['class' => 'btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>';
-            }
-            echo Nav::widget([
-                'items' => $menuItems,
-            ]);
-            NavBar::end();
-            ?>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <span><i class="fa fa-bars"></i></span>
+                        <ul>
+                            <li><a href="http://forum.krean.ru/" target="_blank">Наш форум</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhillPage.open(4)">Платные услуги</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhillPage.open(3)">О нас</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhillPage.open(2)">Контакты</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhillPage.open(1)">Условия пользования</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.switchFullscreen(this)">Полноэкранный режим</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.switchMap(this)">Отключить карту (beta)</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Валюта</span>
+                        <ul>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('RUR')">RUR (Российский рубль)</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('USD')">USD (Американский доллар)</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('EUR')">EUR (Евро)</a></li>
+                        </ul>
+                    </li>
+                <li>
+                    <span>Страны</span>
+                        <div class="menu-countries">
+                            <div class="menu-countries-items" id="overhill-countries"></div>
+                            <div class="menu-countries-prompt">
+                                <span>Хотите получить больше информации о интересующей вас стране? Просто кликните по ней на карте мира, и сервис быстро выдаст вам всю доступную информацию о стране!</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/articles/"><span>Статьи</span></a>
+                    </li>
+                </ul>
+            </div>
             <div class="clear"></div>
         </div>
+        <div class="overhill-header-right">
+            <div class="menu">
+                <ul>
+                    <li style="display: none"><a href="javascript:void(0)" onclick="overhillRealty.service.callback(this)">Обратный звонок</a></li>
+                    <li><a href="javascript:void(0)" onclick="overhill.realty.create()">Подать объявление</a></li>
+                    <?php if (!Yii::$app->user->isGuest) : ?>
+                    <li>
+                        <span>Личный кабинет</span>
+                        <ul>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.cabinet()">Открыть личный кабинет</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.realty.getByAutor(<?=$model->getUserID()?>)">Список моих объявлений</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.logout()">Выйти</a></li>
+                        </ul>
+                    </li>
+                    <?php else : ?>
+                    <li><a href="javascript:void(0)" onclick="overhill.user.signIn()">Вход для продавцов</a></li>
+                    <?php endif; ?>
+                    <li><a href="javascript:void(0)" onclick="overhill.callBackHunterInit()"><img calss="callback" src="/imgs/phone-512-1.png" width="50" height="50" style="margin-top:0px;"></a></li>
+                </ul>
+            </div>
+            <div class="phone">
+                <span>+7 (346) 222-98-08</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
     </div>
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
+    <?= $content ?>
 
 <footer class="footer">
     <div class="container">

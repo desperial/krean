@@ -17,7 +17,7 @@ class RealtyController extends Controller
             'totalCount' => $query->count(),
         ]);
 
-        $realty = $query->orderBy('create_timestamp')
+        $realty = $query->orderBy('sort')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -35,6 +35,7 @@ class RealtyController extends Controller
         $query = Realty::find();
 
         $realty = $query->orderBy('vip_shows DESC')
+            ->where([">","vip_shows",0])
             ->all();
 
         $realty = $this->textMapping($realty);

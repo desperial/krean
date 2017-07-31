@@ -187,7 +187,7 @@ span.ruble:after {
 .overhill-header .logo a {
 	display: block;
 	height: 100%;
-	background: transparent url('imgs/logo41.png') center left no-repeat;
+	background: transparent url('/imgs/logo41.png') center left no-repeat;
 }
 
 .overhill-header .phone {
