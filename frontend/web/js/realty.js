@@ -80,15 +80,20 @@ var realty = new (function()
 		
 		var updater = setInterval(unloader, 20000);
 	};
+
+	this.fixList = function()
+	{
+		$('.overhill-list-ads-container').mCustomScrollbar({theme: 'rounded-dark', scrollButtons: {enable: true, scrollAmount: 50}, mouseWheel: {scrollAmount: 300}, advanced: {updateOnImageLoad: false}, keyboard: {enable: false}});
+		var position = $('.overhill-search-ads-container').height();
+		$('.overhill-list-ads-container').css({top: position}).mCustomScrollbar('update');
+	};
 });
 $(document).ready(function(){
 	$.ajax({
 	    url:"/realty/index"
 	}).done(function(data){
-	    $(".overhill-list-ads-content").html(data);
-		$('.overhill-list-ads-container').mCustomScrollbar({theme: 'rounded-dark', scrollButtons: {enable: true, scrollAmount: 50}, mouseWheel: {scrollAmount: 300}, advanced: {updateOnImageLoad: false}, keyboard: {enable: false}});
-		var position = $('.overhill-search-ads-container').height();
-		$('.overhill-list-ads-container').css({top: position}).mCustomScrollbar('update');
+	    $(".overhill-app-right").html(data);
+		realty.fixList();
 	});
 
 	$.ajax({
@@ -111,4 +116,8 @@ $(document).ready(function(){
 	   	var markerCluster = new MarkerClusterer(overhillMap.getMap(), markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 	});
+});
+
+$(document).on('pjax:success', function() {
+    realty.fixList();
 });

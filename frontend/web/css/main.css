@@ -1234,3 +1234,12 @@ span.ruble:after {
 .pac-container {
 	z-index: 500000;
 }
+.form-group {
+	margin: 0 !important;
+}
+.search-ads-field-price, .search-ads-field-area {
+	width: 275px;
+}
+.field-overhillsearchadsform-priceto, .field-overhillsearchadsform-pricefrom, .field-overhillsearchadsform-areafrom, .field-overhillsearchadsform-areato{
+	display: inline-block;
+}

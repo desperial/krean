@@ -14,6 +14,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Realty;
+use yii\widgets\ActiveForm;
 
 /**
  * Site controller
@@ -212,5 +213,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    
 
 }
