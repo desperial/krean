@@ -242,4 +242,12 @@ var overhillMap = new (function() {
 		return self.destruct().construct();
 	};
 	
+	this.to = function(latitude, longitude, zoom)
+	{
+		googleMapObject.setCenter(new google.maps.LatLng(latitude, longitude));
+		
+		googleMapObject.setZoom(zoom || 18);
+		
+		return self;
+	};
 });

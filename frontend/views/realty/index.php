@@ -4,7 +4,7 @@ use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
 ?>
-<?php Pjax::begin(['id' => 'search-form', 'enablePushState' => false, 'linkSelector' => '.realtyPage', 'scrollTo' => true]);  
+<?php Pjax::begin(['id' => 'search-form', 'enablePushState' => false, 'scrollTo' => true, 'clientOptions' => ['method' => 'GET']]);  
 ?>
 
 <a class="overhill-app-right-toggle" href="javascript:void(0)" onclick="overhill.container.list.toggle()" title="Список объявлений"><i class="fa fa-angle-right"></i></a>
@@ -12,13 +12,14 @@ use yii\widgets\ActiveForm;
 <?php 
     $form = ActiveForm::begin([
 	    'id' => 'search-form',
-	    'method' => 'post',
+	    'method' => 'get',
 	    'options' => [
 	    	'data' => ['pjax' => true],
 	    	'class' => 'form-horizontal'
     	],
 	]);
-print_r($model);?>
+?>
+<?=$form->field($model, 'currency')->hiddenInput(['value'=> "0"])->label(false); ?>
         <div class="overhill-search-ads-basic-container">
             <div class="overhill-search-ads-basic-content">
                 <div class="search-ads-group">
@@ -30,13 +31,13 @@ print_r($model);?>
                 <div class="search-ads-group">
                     <div class="search-ads-field search-ads-field-price">
                         <div class="search-ads-legend">Цена (в выбранной вами валюте):</div>
-                        <?=$form->field($model, 'priceFrom', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0']) ; ?> &nbsp;&mdash;&nbsp;
-						<?=$form->field($model, 'priceTo', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0']) ; ?>
+                        <?=$form->field($model, 'priceFrom', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0','type'=>'number']) ; ?> &nbsp;&mdash;&nbsp;
+						<?=$form->field($model, 'priceTo', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0','type'=>'number']) ; ?>
                     </div>
                     <div class="search-ads-field search-ads-field-area">
                         <div class="search-ads-legend">Площадь (м²):</div>
-                        <?=$form->field($model, 'areaFrom', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0']) ; ?> &nbsp;&mdash;&nbsp; 
-						<?=$form->field($model, 'areaTo', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0']) ; ?>
+                        <?=$form->field($model, 'areaFrom', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0','type'=>'number']) ; ?> &nbsp;&mdash;&nbsp; 
+						<?=$form->field($model, 'areaTo', ["template" => "{input}\n{error}"])->textInput(['placeholder' => '0','type'=>'number']) ; ?>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -73,42 +74,50 @@ print_r($model);?>
                 <div class="search-ads-group">
                     <div class="search-ads-field search-ads-field-country">
                         <div class="search-ads-legend">Страна:</div>
-                        <select id="search-ads-container-for-counties" name="country" onchange="overhill.realty.list.setOption(this.name, this.value)" disabled="disabled">
-                            <option value="" selected="selected">...</option>
-                        </select>
+                        <?php 
+                        $countriesArray = [];
+                        $countriesArray[0] = "...";
+                        foreach ($countries as $country) :
+                        	$countriesArray[$country['country']] = $country['name']." (".$country['cnt'].")";
+                        endforeach; 
+                        ?>
+                        <?=$form->field($model, 'country', ["template" => "{input}\n{error}"])->dropDownList($countriesArray);?>
+                        
                     </div>
                     <div class="search-ads-field search-ads-field-type">
                         <div class="search-ads-legend">Тип недвижимости:</div>
-                        <select name="type" onchange="overhill.realty.list.setOption(this.name, this.value)">
-                            <option value="" selected="selected">...</option>
-                            <option value="residential">Жилой</option>
-                            <option value="commercial">Коммерческий</option>
-                        </select>
+                        <?=$form->field($model, 'type', ["template" => "{input}\n{error}"])->dropDownList([
+                        	0 => "...",
+                        	"residental" => "Жилой",
+                        	"commercial" => "Коммерческий"
+                        ]);?>
+                        
                     </div>
                     <div class="clear"></div>
                 </div>
                 <div class="search-ads-group">
                     <div class="search-ads-field search-ads-field-view">
                         <div class="search-ads-legend">Вид недвижимости:</div>
-                        <select name="view" onchange="overhill.realty.list.setOption(this.name, this.value)">
-                            <option value="" selected="selected">...</option>
-                            <option value="house">Дом</option>
-                            <option value="building">Здание</option>
-                            <option value="land">Земельный участок</option>
-                            <option value="investment">Инвестиционный проект</option>
-                            <option value="apartment">Квартира</option>
-                            <option value="premises">Помещение</option>
-                            <option value="others">Прочее</option>
-                            <option value="townhouse">Таунхаус</option>
-                        </select>
+                        <?=$form->field($model, 'subtype', ["template" => "{input}\n{error}"])->dropDownList([
+                        	0 => "...",
+                        	"house" => "Дом",
+                        	"building" => "Здание",
+                        	"land" => "Земельный участок",
+                        	"investment" => "Инвестиционный проект",
+                        	"apartment" => "Квартира",
+                        	"premises" => "Помещение",
+                        	"others" => "Прочее",
+                        	"townhouse" => "Таунхаус"
+                        ]);?>
+                        
                     </div>
                     <div class="search-ads-field search-ads-field-group">
                         <div class="search-ads-legend">Социальная группа:</div>
-                        <select name="group" onchange="overhill.realty.list.setOption(this.name, this.value)">
-                            <option value="" selected="selected">...</option>
-                            <option value="primary">Первичная</option>
-                            <option value="secondary">Вторичная</option>
-                        </select>
+                        <?=$form->field($model, 'group', ["template" => "{input}\n{error}"])->dropDownList([
+                        	0 => "...",
+                        	"primary" => "Первичная",
+                        	"secondary" => "Вторичная"
+                        ]);?>
                     </div>
                     <div class="clear"></div>
                 </div>

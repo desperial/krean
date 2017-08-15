@@ -47,15 +47,17 @@ AppAsset::register($this);
                     <li>
                         <span>Валюта</span>
                         <ul>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('RUR')">RUR (Российский рубль)</a></li>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('USD')">USD (Американский доллар)</a></li>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('EUR')">EUR (Евро)</a></li>
+                            <li><a href="javascript:void(0)" onclick="realty.setCurrency('RUR')">RUR (Российский рубль)</a></li>
+                            <li><a href="javascript:void(0)" onclick="realty.setCurrency('USD')">USD (Американский доллар)</a></li>
+                            <li><a href="javascript:void(0)" onclick="realty.setCurrency('EUR')">EUR (Евро)</a></li>
                         </ul>
                     </li>
                 <li>
                     <span>Страны</span>
                         <div class="menu-countries">
-                            <div class="menu-countries-items" id="overhill-countries"></div>
+                            <div class="menu-countries-items" id="overhill-countries">
+                                
+                            </div>
                             <div class="menu-countries-prompt">
                                 <span>Хотите получить больше информации о интересующей вас стране? Просто кликните по ней на карте мира, и сервис быстро выдаст вам всю доступную информацию о стране!</span>
                             </div>

@@ -232,6 +232,15 @@ var overhill =
 		{
 			return Math.floor(new Date().getTime() / 1000);
 		}
+	},
+
+	loadMenuCountries: function()
+	{
+		$.ajax({
+		    url:"/realty/menucountries"
+		}).done(function(data){
+		    $("#overhill-countries").html(data);
+		});
 	}
 };
 
@@ -264,5 +273,5 @@ jQuery.fn.onDelay = function(name, time, callback)
 		time);
 	});
 };
-
+overhill.loadMenuCountries();
 realty.vip.unload('#overhill-vip-ads');

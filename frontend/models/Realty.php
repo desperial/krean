@@ -13,9 +13,7 @@ class Realty extends ActiveRecord
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
     
-    /**
-     * @return string the name of the table associated with this ActiveRecord class.
-     */
+    
     public static function tableName()
     {
         return '{{%overhill_realty}}';
@@ -40,6 +38,10 @@ class Realty extends ActiveRecord
     {
         return $this->hasOne(Description::className(), ['realty' => 'id']);
     }
+
+    /**
+     * @return string the name of the table associated with this ActiveRecord class.
+     */
 
 }
 

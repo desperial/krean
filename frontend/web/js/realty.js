@@ -87,6 +87,19 @@ var realty = new (function()
 		var position = $('.overhill-search-ads-container').height();
 		$('.overhill-list-ads-container').css({top: position}).mCustomScrollbar('update');
 	};
+
+	this.chooseCountry = function(latitude,longitude,code) 
+	{
+		$("#searchform-country").val(code);
+		$("#search-form button").click();
+		overhillMap.to(latitude,longitude,8);
+	}
+
+	this.setCurrency = function(code)
+	{
+		$("#searchform-currency").val(code)
+		$("#search-form button").click();
+	}
 });
 $(document).ready(function(){
 	$.ajax({

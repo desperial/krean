@@ -1240,6 +1240,6 @@ span.ruble:after {
 .search-ads-field-price, .search-ads-field-area {
 	width: 275px;
 }
-.field-overhillsearchadsform-priceto, .field-overhillsearchadsform-pricefrom, .field-overhillsearchadsform-areafrom, .field-overhillsearchadsform-areato{
+.field-searchform-priceto, .field-searchform-pricefrom, .field-searchform-areafrom, .field-searchform-areato{
 	display: inline-block;
 }

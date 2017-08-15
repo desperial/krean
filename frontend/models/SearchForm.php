@@ -14,10 +14,16 @@ class SearchForm extends \yii\base\Model
     public $areaFrom;
     public $areaTo;
     public $deal;
+    public $country;
+    public $type;
+    public $subtype;
+    public $group;
+    public $currency;
 
     public function rules()
     {
         return [
+            [['common', 'priceFrom', 'priceTo', 'areaFrom', 'areaTo', 'deal', 'country','type','subtype','group','currency'], 'safe']
         ];
     }
 }
