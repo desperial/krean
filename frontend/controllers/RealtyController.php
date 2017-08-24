@@ -43,6 +43,34 @@ class RealtyController extends Controller
             if ($model->group != "0") {
                 $searchCond[] = ["=",'group',$model->group];
             }
+            if (($model->priceFrom > 0) || ($model->priceTo > 0)) {
+                $priceFrom = $model->priceFrom > 0 ? $model->priceFrom : 0;
+                $priceTo = $model->priceTo > 0 ? $model->priceTo : 999999999999;
+                $session = \Yii::$app->session;
+                $session->open();
+                $searchCond[] = [
+                    "or",
+                    [
+                        "and",
+                        ["=", "currency", "RUR"],
+                        [">=","price", $session['curValues'][$session['currency']] * $priceFrom],
+                        ["<=","price", $session['curValues'][$session['currency']] * $priceTo]
+                    ],
+                    [
+                        "and",
+                        ["=", "currency", "EUR"],
+                        [">=","price", ($session['curValues'][$session['currency']] / $session['curValues']['EUR']) * $priceFrom],
+                        ["<=","price", ($session['curValues'][$session['currency']] / $session['curValues']['EUR']) * $priceTo]
+                    ],
+                    [
+                        "and",
+                        ["=", "currency", "USD"],
+                        [">=","price", ($session['curValues'][$session['currency']] / $session['curValues']['USD']) * $priceFrom],
+                        ["<=","price", ($session['curValues'][$session['currency']] / $session['curValues']['USD']) * $priceTo]
+                    ]
+                ];
+                $session->close();
+            }
 
             $currency = $model->currency;
             $query = Realty::find()->where($searchCond);

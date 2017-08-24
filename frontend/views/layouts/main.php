@@ -9,6 +9,9 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\bootstrap\Modal;
+use yii\bootstrap\Tabs;
+use common\models\LoginForm;
 
 AppAsset::register($this);
 ?>
@@ -80,12 +83,12 @@ AppAsset::register($this);
                         <span>Личный кабинет</span>
                         <ul>
                             <li><a href="javascript:void(0)" onclick="overhill.user.cabinet()">Открыть личный кабинет</a></li>
-                            <li><a href="javascript:void(0)" onclick="overhill.realty.getByAutor(<?=$model->getUserID()?>)">Список моих объявлений</a></li>
+                            <li><a href="javascript:void(0)" onclick="">Список моих объявлений</a></li>
                             <li><a href="javascript:void(0)" onclick="overhill.user.logout()">Выйти</a></li>
                         </ul>
                     </li>
                     <?php else : ?>
-                    <li><a href="javascript:void(0)" onclick="overhill.user.signIn()">Вход для продавцов</a></li>
+                    <li><a href="javascript:void(0)" onclick="overhill.modal.login.show();">Вход для продавцов</a></li>
                     <?php endif; ?>
                     <li><a href="javascript:void(0)" onclick="overhill.callBackHunterInit()"><img calss="callback" src="/imgs/phone-512-1.png" width="50" height="50" style="margin-top:0px;"></a></li>
                 </ul>
@@ -98,10 +101,36 @@ AppAsset::register($this);
         <div class="clear"></div>
     </div>
     <?= $content ?>
+<?php
+/*overhill.realty.getByAutor(<?=$model->getUserID()?>)*/
+Modal::begin([
+    'header' => 'Вход',
+    'id' => 'loginModal',
+    'options' => ['class' => 'overhillFormUser']
+]);
+echo Tabs::widget([
+    'items' => [
+        [
+            'label'     => 'Авторизация',
+            'content'   => $this->render('auth'),
+            'active'    => true
+        ],
+        [
+            'label'     => 'Регистрация',
+            'content'   => $this->render('register')
+        ],
+        [
+            'label'     => 'Забыли пароль?',
+            'content'   => $this->render('restore')
+        ]
+    ]
+]);
 
+Modal::end();
+?>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Krean <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

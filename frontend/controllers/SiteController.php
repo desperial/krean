@@ -160,7 +160,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('signup', [
+        return $this->render('register', [
             'model' => $model,
         ]);
     }

@@ -241,6 +241,16 @@ var overhill =
 		}).done(function(data){
 		    $("#overhill-countries").html(data);
 		});
+	},
+	modal: 
+	{
+		login:
+		{
+			show: function()
+			{
+				$('#loginModal').modal('show');
+			}
+		}
 	}
 };
 
