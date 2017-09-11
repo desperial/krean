@@ -1167,6 +1167,9 @@ span.ruble:after {
 }
 
 /* Публикация объявления */
+.modal.form-ad {
+	
+}
 .modal.form-ad .error-container {
 	overflow: auto;
 	position: absolute;

@@ -77,7 +77,7 @@ AppAsset::register($this);
             <div class="menu">
                 <ul>
                     <li style="display: none"><a href="javascript:void(0)" onclick="overhillRealty.service.callback(this)">Обратный звонок</a></li>
-                    <li><a href="javascript:void(0)" onclick="overhill.realty.create()">Подать объявление</a></li>
+                    <li><a href="javascript:void(0)" onclick="overhill.modal.addRealty.show()">Подать объявление</a></li>
                     <?php if (!Yii::$app->user->isGuest) : ?>
                     <li>
                         <span>Личный кабинет</span>
@@ -90,7 +90,7 @@ AppAsset::register($this);
                     <?php else : ?>
                     <li><a href="javascript:void(0)" onclick="overhill.modal.login.show();">Вход для продавцов</a></li>
                     <?php endif; ?>
-                    <li><a href="javascript:void(0)" onclick="overhill.callBackHunterInit()"><img calss="callback" src="/imgs/phone-512-1.png" width="50" height="50" style="margin-top:0px;"></a></li>
+                    <li><a href="javascript:void(0)" onclick="overhill.modal.addRealty.show()"><img calss="callback" src="/imgs/phone-512-1.png" width="50" height="50" style="margin-top:0px;"></a></li>
                 </ul>
             </div>
             <div class="phone">
@@ -127,7 +127,17 @@ echo Tabs::widget([
 ]);
 
 Modal::end();
+
+Modal::begin([
+    'header' => 'Размещение объявления',
+    'id' => 'addRealtyModal',
+    'options' => ['class' => 'form-ad']
+]);
+
+
+Modal::end();
 ?>
+
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Krean <?= date('Y') ?></p>

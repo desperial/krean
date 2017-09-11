@@ -250,6 +250,13 @@ var overhill =
 			{
 				$('#loginModal').modal('show');
 			}
+		},
+		addRealty:
+		{
+			show: function()
+			{
+				$('#addRealtyModal').modal('show');
+			}
 		}
 	}
 };
