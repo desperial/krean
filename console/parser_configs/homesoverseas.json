@@ -6,6 +6,7 @@
   "parse_shift": "1",
   "parse_listing": "page",
   "object_selector": ".offer_body",
+  "cookies_file": "homesoverseas",
   "object_link_selector": "a.pic",
   "add_site_to_object_link": true,
   "image_selector": "#fotorama>a>img",
