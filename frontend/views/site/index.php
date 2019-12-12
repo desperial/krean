@@ -5,7 +5,7 @@ use common\widgets\RealtyWigdet;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Depala.ru - вся недвижимость, в одном месте!';
+$this->title = 'Depala.ru - вся зарубежная недвижимость, в одном месте!';
 ?>
 <div class="sf-main-wrap">
     <div class="sf-overlay">
@@ -114,7 +114,11 @@ $this->title = 'Depala.ru - вся недвижимость, в одном ме�
         </div>
     </div>
 </div>
+<script>
+    function initMap() {
 
+    }
+</script>
 <?
 $this->registerJs('
     $(".mat-input").focus(function(){

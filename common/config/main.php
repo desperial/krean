@@ -7,11 +7,11 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'baseUrl' => '',
             'showScriptName' => false,
             'rules' => [
                 '' => 'site/index',
                 '<action>' => 'site/<action>',
+                '<controller>/index' => '<controller>',
             ],
         ],
 

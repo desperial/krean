@@ -110,7 +110,7 @@ class Realty extends ActiveRecord
             $search['deal'] = $data['deal'];
         $price = ['between', 'price', $price_from, $price_to];
         $area = ['between', 'area', $area_from, $area_to];
-        return Realty::find()->where($search)->andWhere($price)->andWhere($area);
+        return Realty::find()->where($search)->andWhere($price)->andWhere($area)->orderBy("created_at DESC");
     }
 }
 
