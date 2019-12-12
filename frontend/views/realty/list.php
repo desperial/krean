@@ -6,7 +6,7 @@ use yii\widgets\LinkPager;
 <? foreach ($realty as $item) : ?>
     <div class="realty-item">
         <div class="realty-photo">
-            <img src="<?=$item->photos ?  $item->photos[0]->link : "" ?>"/>
+            <img src="<?=$item->photos ?  (substr($item->photos[0]->link, 0, 4) == "http" ? $item->photos[0]->link : Yii::getAlias("@uploadsWeb").$item->photos[0]->link) : "" ?>"/>
         </div>
         <div class="top-realty-row">
             <div class="realty-name" data-name="<?=$item->address?>" data-map="<?=($item->lat && $item->lon) ? '1': '0'?>" data-lat="<?=$item->lat?>" data-lon="<?=$item->lon?>">
