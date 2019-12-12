@@ -9,7 +9,8 @@
   "object_link_selector": ".spec_item",
   "object_link_selector2": ".extra_item",
   "add_site_to_object_link": false,
-  "image_selector": ".c-slider__to-modal>img",
+  "image_selector": "#imageGallery img",
+  "image_src_attr": "data-src",
   "site_for": "depala",
   "fields": [
     {
