@@ -1,0 +1,87 @@
+{
+  "site": "kn.ngs.ru",
+  "parse_link": "https://kn.ngs.ru/kupit/?gorod=all&cena-za=1&page=",
+  "parse_shift": "1",
+  "link_prefix": "https://",
+  "parse_listing": "page",
+  "object_selector": "#list-records td.lines",
+  "object_link_selector": "a[target=\"_blank\"]",
+  "add_site_to_object_link": false,
+  "image_selector": ".card__photos-list a",
+  "image_src_attr": "href",
+  "site_for": "rentatime",
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": ".card__cost",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "area",
+      "parse_tag": ".card__area-section .sms-card-list__value",
+      "conversion": [
+        "match",
+        "spaces",
+        "floatval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*[^м<sup>\\s])\/"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".card__address",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "parse_tag": ".card__header",
+      "conversion": [
+        "match"
+      ],
+      "match": "\/Продам\\s*([\\s\\S]*)\/"
+    },
+    {
+      "field": "description",
+      "parse_tag": ".object-description-text",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "lat",
+      "parse_tag": "script",
+      "parse_cond": "showYandexMap",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/([\\-0-9.]*),\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": "script",
+      "parse_cond": "showYandexMap",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/,\\s*([\\-0-9.]*)\/"
+    }
+  ]
+}

@@ -233,9 +233,8 @@ var overhillMap = new (function()
 			jQuery.get('/ajax/overhill-unload_coordinates', function(response)
 			{
 				var markerIcon = new google.maps.MarkerImage(fenric.url('assets/map/marker.png?v3'), new google.maps.Size(32,50));
-				
+				/*
 				googleMapMarkers = {};
-				
 				for (var i = 0; i < response.length; i++)
 				{
 					googleMapMarkers[response[i].id] = new google.maps.Marker({position: new google.maps.LatLng(response[i].latitude, response[i].longitude), icon: markerIcon});
@@ -249,7 +248,7 @@ var overhillMap = new (function()
 							googleMapOptions.onClickMarker(this.marker_id);
 						});
 					}
-				}
+				}*/
 				
 				// Сохранение экземпляра кластера
 				googleMapMarkersClusterer = new MarkerClusterer(googleMapObject, googleMapMarkers,

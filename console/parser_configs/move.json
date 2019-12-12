@@ -1,0 +1,201 @@
+{
+  "site": "move.ru",
+  "parse_link": "move.ru/kommercheskaya_nedvijimost/?limit=20&page=",
+  "parse_shift": "1",
+  "link_prefix": "https:",
+  "parse_link_prefix": "https://",
+  "parse_listing": "page",
+  "object_selector": ".search-item__image-block",
+  "object_link_selector": ".search-item__item-link",
+  "add_site_to_object_link": false,
+  "image_selector": ".images-slider_fotorama>a",
+  "image_src_attr": "data-full",
+  "site_for": "rentatime",
+  "city_as_subdomain": true,
+  "city_addition": [
+    "adygeya",
+    "ra",
+    "ak",
+    "amursk",
+    "arhangelsk",
+    "astrahan",
+    "ufa",
+    "belgorod",
+    "bryansk",
+    "ulan-ude",
+    "vladimir",
+    "volgograd",
+    "vologda",
+    "voronezh",
+    "dagestan",
+    "birobidzhan",
+    "chita",
+    "ivanovo",
+    "ingushetia",
+    "irkutsk",
+    "kbr",
+    "kaliningrad",
+    "kalmykiya",
+    "kaluga",
+    "kamchatka",
+    "kchr",
+    "kareliya",
+    "kemerov",
+    "kirov",
+    "komi",
+    "kostroma",
+    "krasnodar",
+    "krasnoyarsk",
+    "krim",
+    "kurgan",
+    "kursk",
+    "lipetsk",
+    "magadan",
+    "marijel",
+    "mordoviya",
+    "murmansk",
+    "nao",
+    "nn",
+    "vnovgorod",
+    "novosibirsk",
+    "omsk",
+    "orenburg",
+    "orel",
+    "penza",
+    "perm",
+    "vladivostok",
+    "pskov",
+    "rnd",
+    "ryazan",
+    "samara",
+    "spb",
+    "saratov",
+    "saha",
+    "yuzhno-sahalinsk",
+    "sverdlovsk",
+    "sevastopol",
+    "osetiya",
+    "smolensk",
+    "stavropol",
+    "tambov",
+    "tatarstan",
+    "tver",
+    "tomsk",
+    "tula",
+    "tyva",
+    "tyumen",
+    "udmurtia",
+    "ulyanovsk",
+    "habarovsk",
+    "hakasiya",
+    "hmao",
+    "chelyabinsk",
+    "chechenskaya",
+    "chuvashia",
+    "anadyr",
+    "salehard",
+    "yaroslavl"
+  ],
+  "fields": [
+    {
+      "field": "price",
+      "parse_cond": "Цена:",
+      "parse_tag": ".object-info__details-table_property_name",
+      "next": ".object-info__details-table_property_value",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "area",
+      "parse_cond": "Общая площадь:",
+      "parse_tag": ".object-info__details-table_property_name",
+      "next": ".object-info__details-table_property_value",
+      "conversion": [
+        "match_single",
+        "spaces",
+        "floatval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)\/",
+      "alt": true,
+      "alt_parse_cond": "Описание",
+      "alt_parse_tag": ".object-page__header-object-block",
+      "alt_next": ".object-page__text-block",
+      "alt_match": "\/[пП]лощадь[ю\\s]*(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "lat",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lat\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lng\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".object-place__address",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "parse_cond": "в продажу",
+      "parse_tag": ".object-info__title",
+      "conversion": [
+        "match",
+        "type_normalization"
+      ],
+      "match": "\/(.*) в продажу\/"
+    },
+    {
+      "field": "description",
+      "parse_cond": "Описание",
+      "parse_tag": ".object-page__header-object-block",
+      "next": ".object-page__text-block"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "lat",
+      "parse_tag": "script",
+      "parse_cond": "YaMaps.coords",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/YaMaps\\.coords=\\[\\s*([\\-0-9.]*)\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": "script",
+      "parse_cond": "YaMaps.coords",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/YaMaps\\.coords=\\[\\s*(?:[\\-0-9.]*),\\s*([\\-0-9.]*)\/"
+    }
+  ]
+}

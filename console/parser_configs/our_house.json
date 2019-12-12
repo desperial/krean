@@ -1,0 +1,164 @@
+{
+  "site": "наш.дом.рф",
+  "parse_link": "https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?limit=50&sortField=devId.devShortCleanNm&sortType=asc",
+  "parse_link_suffix": "&offset=",
+  "parse_shift": "50",
+  "link_prefix": "https://",
+  "parse_listing": "page",
+  "first_page": 0,
+  "is_list_json": true,
+  "select_json": ".styles__Container-sc-1djb6ad-7",
+  "object_selector_is_link": true,
+  "object_link_selector": "",
+  "add_site_to_object_link": true,
+  "cookies_file": "our_house_cookies.txt",
+  "image_selector": ".styles__GalleryWrapper-q8c4gf-0 img",
+  "object_images": "renderPhotos",
+  "target_type": "complex",
+  "site_for": "rentatime",
+  "builder_object": "developer",
+  "builder": [
+    {
+      "field": "site_id",
+      "prop": "devId"
+    },
+    {
+      "field": "name",
+      "prop": "shortName"
+    },
+    {
+      "field": "full_name",
+      "prop": "fullName"
+    },
+    {
+      "field": "org_form_full",
+      "prop": "orgForm//fullForm"
+    },
+    {
+      "field": "org_form_short",
+      "prop": "orgForm//shortForm"
+    }
+  ],
+  "fields": [
+    {
+      "field": "site_id",
+      "prop": "complexId",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "name",
+      "prop": "complexNm",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "short_name",
+      "prop": "complexShortNm"
+    },
+    {
+      "field": "area",
+      "prop": "complexSquareLiving"
+    },
+    {
+      "field": "ready_time",
+      "prop": "complexReady100PercDt",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "lat",
+      "prop": "latitude"
+    },
+    {
+      "field": "lon",
+      "prop": "longitude"
+    }
+  ],
+  "objects_list": "objectList",
+  "object_props": "props//initialProps//pageProps",
+  "object": [
+    {
+      "field": "site_id",
+      "prop": "objId"
+    },
+    {
+      "field": "problem_id",
+      "prop": "problemId"
+    },
+    {
+      "field": "address",
+      "prop": "objAddr"
+    },
+    {
+      "field": "name",
+      "prop": "objCommercNm"
+    },
+    {
+      "field": "floors",
+      "prop": "objFloorMax"
+    },
+    {
+      "field": "flats_count",
+      "prop": "objElemLivingCnt"
+    },
+    {
+      "field": "ready_date",
+      "prop": "objReady100PercDt"
+    },
+    {
+      "field": "ready_date_quarter",
+      "prop": "objReady100PercQuarterDt"
+    },
+    {
+      "field": "area",
+      "prop": "objSquareLiving"
+    },
+    {
+      "field": "lat",
+      "prop": "latitude"
+    },
+    {
+      "field": "lon",
+      "prop": "longitude"
+    }
+  ],
+  "object_additional": [
+    {
+      "field": "polish_type",
+      "prop": "finishType"
+    },
+    {
+      "field": "realty_class",
+      "prop": "className"
+    },
+    {
+      "field": "walls_material",
+      "prop": "wallMaterial"
+    },
+    {
+      "field": "free_planning",
+      "prop": "freePlan"
+    },
+    {
+      "field": "parking_places_count",
+      "prop": "parkingCount"
+    },
+    {
+      "field": "project_declaration_number",
+      "prop": "projectDeclaration//number"
+    },
+    {
+      "field": "project_declaration_date",
+      "prop": "projectDeclaration//date"
+    },
+    {
+      "field": "project_declaration_link",
+      "prop": "projectDeclaration//link"
+    }
+
+  ]
+}

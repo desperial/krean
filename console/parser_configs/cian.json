@@ -1,0 +1,87 @@
+{
+  "site": "www.cian.ru",
+  "parse_link": "https://www.cian.ru/cat.php?deal_type=sale&engine_version=2&offer_type=offices&office_type[0]=1&region=1&p=",
+  "parse_shift": "1",
+  "parse_to": "60",
+  "link_prefix": "",
+  "parse_listing": "page",
+  "object_selector": ".b-results-tile",
+  "object_link_selector": "a",
+  "add_site_to_object_link": false,
+  "image_selector": "img.e-gallery-img",
+  "site_for": "rentatime",
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": ".e-table-column>ul>li>strong",
+      "parse_cond": "Цена:",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "next_text": ".e-table-column li",
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "area",
+      "parse_cond": "Площадь:",
+      "parse_tag": ".e-table-column>ul>li>strong",
+      "conversion": [
+        "match",
+        "spaces",
+        "floatval"
+      ],
+      "next_text": ".e-table-column li",
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "lat",
+      "parse_tag": ".b-search-map",
+      "conversion": [
+      ],
+      "attribute": "data-map-lat"
+    },
+    {
+      "field": "lon",
+      "parse_tag": ".b-search-map",
+      "conversion": [
+      ],
+      "attribute": "data-map-lon"
+    },
+    {
+      "field": "address",
+      "parse_cond": "Расположение",
+      "parse_tag": ".g-listing-info-heading",
+      "conversion": [
+        "trim"
+      ],
+      "next": "p"
+    },
+    {
+      "field": "type",
+      "parse_cond": "Тип объекта:",
+      "parse_tag": ".e-table-column>ul>li>strong",
+      "conversion": [
+        "match",
+        "trim"
+      ],
+      "next_text": ".e-table-column li",
+      "match": "\/Тип\\sобъекта:\\s([\\W\\w]*)\/"
+    },
+    {
+      "field": "description",
+      "parse_tag": ".e-listing-description"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    }
+  ]
+}

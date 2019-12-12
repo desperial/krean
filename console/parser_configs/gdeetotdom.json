@@ -1,0 +1,208 @@
+{
+  "site": "gdeetotdom.ru",
+  "parse_link": "https://www.gdeetotdom.ru/",
+  "parse_shift": "1",
+  "parse_link_suffix": "/?page=",
+  "link_prefix": "",
+  "parse_listing": "page",
+  "object_selector": ".b-objects-list .c-card",
+  "object_link_selector": "a:first",
+  "add_site_to_object_link": false,
+  "image_selector": "a.js-preview-photo",
+  "image_src_attr": "data-image",
+  "site_for": "rentatime",
+  "link_city_first": false,
+  "city_addition": [
+    "moskva",
+    "moskovskaya-oblast",
+    "sankt-peterburg",
+    "leningradskaya-oblast",
+    "adygeya-republic",
+    "altay-republic",
+    "altayskiy-kray",
+    "amurskaya-oblast",
+    "arkhangelskaya-oblast",
+    "astrakhanskaya-oblast",
+    "bashkortostan-republic",
+    "belgorodskaya-oblast",
+    "bryanskaya-oblast",
+    "buryatiya-republic",
+    "vladimirskaya-oblast",
+    "volgogradskaya-oblast",
+    "vologodskaya-oblast",
+    "voronezhskaya-oblast",
+    "dagestan-republic",
+    "evreyskaya-avtonomnaya-oblast",
+    "zabaykalskiy-kray",
+    "ivanovskaya-oblast",
+    "ingushetiya-republic",
+    "irkutskaya-oblast",
+    "kabardino-balkarskaya-republic",
+    "kaliningradskaya-oblast",
+    "kalmykiya-republic",
+    "kaluzhskaya-oblast",
+    "kamchatskiy-kray",
+    "karachayevo-cherkesskaya-republic",
+    "kareliya-republic",
+    "kemerovskaya-oblast",
+    "kirovskaya-oblast",
+    "komi-republic",
+    "kostromskaya-oblast",
+    "krasnodarskiy-kray",
+    "krasnoyarskiy-kray",
+    "krym-republic",
+    "kurganskaya-oblast",
+    "kurskaya-oblast",
+    "lipetskaya-oblast",
+    "magadanskaya-oblast",
+    "mariy-el-republic",
+    "mordoviya-republic",
+    "murmanskaya-oblast",
+    "nenetskiy-avtonomnyj-okrug",
+    "nizhegorodskaya-oblast",
+    "novgorodskaya-oblast",
+    "novosibirskaya-oblast",
+    "omskaya-oblast",
+    "orenburgskaya-oblast",
+    "orlovskaya-oblast",
+    "penzenskaya-oblast",
+    "permskiy-kray",
+    "primorskiy-kray",
+    "pskovskaya-oblast",
+    "rostovskaya-oblast",
+    "ryazanskaya-oblast",
+    "samarskaya-oblast",
+    "saratovskaya-oblast",
+    "yakutiya-republic",
+    "sakhalinskaya-oblast",
+    "sverdlovskaya-oblast",
+    "sevastopol",
+    "severnaya-osetiya-republic",
+    "smolenskaya-oblast",
+    "stavropolskiy-kray",
+    "tambovskaya-oblast",
+    "tatarstan-republic",
+    "tverskaya-oblast",
+    "tomskaya-oblast",
+    "tulskaya-oblast",
+    "tyva-republic",
+    "tyumenskaya-oblast",
+    "udmurtskaya-republic",
+    "ulyanovskaya-oblast",
+    "khabarovskiy-kray",
+    "khakasiya-republic",
+    "khanty-mansiyskiy-avtonomnyj-okrug",
+    "chelyabinskaya-oblast",
+    "chechenskaya-republic",
+    "chuvashskaya-republic",
+    "chukotskiy-avtonomnyj-okrug",
+    "yamalo-nenetskiy-avtonomnyj-okrug",
+    "yaroslavskaya-oblast"
+  ],
+  "parse_link_types": [
+    {
+      "link": "kupit-zdanie-",
+      "text": "здание"
+    },
+    {
+      "link": "kupit-sklad-",
+      "text": "склад"
+    },
+    {
+      "link": "kupit-garazh-",
+      "text": "гараж"
+    },
+    {
+      "link": "kupit-torgovoe-pomeshchenie-",
+      "text": "торговая площадь"
+    },
+    {
+      "link": "kupit-proizvodstvennoe-pomeshchenie-",
+      "text": "производство"
+    },
+    {
+      "link": "kupit-pomeshchenie-svobodnogo-naznacheniya-",
+      "text": "ПСН"
+    },
+    {
+      "link": "kupit-ofis-",
+      "text": "офис"
+    }
+  ],
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": "#price_nat",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "area",
+      "parse_tag": ".b-dotted-block .b-dotted-block__left",
+      "parse_cond": "Общая площадь",
+      "conversion": [
+        "match",
+        "spaces",
+        "floatval"
+      ],
+      "next": ".b-dotted-block__right",
+      "match": "\/(\\d[\\d\\.\\s,]*[^м<sup>\\s])\/"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".address-line",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "fixed": "Офис",
+      "parse_tag": false,
+      "conversion": [
+        "type_linked"
+      ]
+    },
+    {
+      "field": "description",
+      "parse_tag": ".description",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "lat",
+      "parse_tag": "script",
+      "parse_cond": "NearestLatlng",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/NearestLatlng\\s*=\\s*\\[([\\-0-9.]*),\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": "script",
+      "parse_cond": "NearestLatlng",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/NearestLatlng\\s*=\\s*\\[[\\-0-9.]*,\\s*([\\-0-9.]*)\\]\/"
+    }
+  ]
+}

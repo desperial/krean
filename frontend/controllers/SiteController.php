@@ -74,7 +74,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $realtyCountries = Realty::find()->groupBy("country")->all();
+        $realtyTypes = Realty::find()->groupBy("type")->all();
+        return $this->render('index',[
+            'countries' => $realtyCountries,
+            'types' => $realtyTypes,
+        ]);
     }
 
     /**

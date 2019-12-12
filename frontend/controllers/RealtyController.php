@@ -60,7 +60,7 @@ class RealtyController extends Controller
     {
         $query = Realty::find();
 
-        $realty = $query->orderBy('create_timestamp')
+        $realty = $query->orderBy('created_at')
             ->all();
         //\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return $this->renderAjax('coords', [
@@ -68,6 +68,35 @@ class RealtyController extends Controller
         ]);
     }
 
+    public function actionList()
+    {
+        $realty = Realty::searchRealty();
+        //$countRealty = clone $this->realty;
+        $data = \Yii::$app->request->post();
+        $pages = new Pagination(['totalCount' => $realty->count(), 'pageSize' => 10]);
+        $realty = $realty->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        if (\Yii::$app->request->isPjax)
+//            return $this->asJson($realty);
+            return $this->renderAjax('list', [
+                'realty' => $realty,
+                'pages' => $pages
+            ]);
+        else {
+            $realtyCountries = Realty::find()->groupBy("country")->all();
+            $realtyTypes = Realty::find()->groupBy("type")->all();
+            return $this->render('/site/index', [
+                'realty' => $realty,
+                'pages' => $pages,
+                'countries' => $realtyCountries,
+                'types' => $realtyTypes
+            ]);
+        }
+
+        //$data = ['realty' => $realty, 'count' => count($realty)];
+        //return $this->asJson($data);
+    }
     private function textMapping($realty)
     {
         $mappingArray = [
@@ -75,7 +104,7 @@ class RealtyController extends Controller
                 "buy" => "Продажа", 
                 "rent" => "аренда"
             ],
-            "type" => [
+            /*"type" => [
                 "residential" => "Жилой",
                 "commercial" => "Коммерческий"
             ],
@@ -92,14 +121,13 @@ class RealtyController extends Controller
             "group" => [
                 "primary"   => "Первичная",
                 "secondary" => "Вторичная"
-            ]
+            ]*/
         ];
         foreach ($realty as $item) {
             foreach ($mappingArray as $key=>$field) {
                 $item[$key] = $field[$item[$key]];
             }
-            $item->users->contact_phone = substr($item->users->contact_phone, 0, strlen($item->users->contact_phone) -
-                 4) . 'XXXX';
+
         }
         return $realty;
     }

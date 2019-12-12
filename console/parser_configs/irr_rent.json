@@ -1,0 +1,89 @@
+{
+  "site": "irr.ru",
+  "parse_link": "https://russia.irr.ru/real-estate/commercial/page",
+  "parse_shift": "1",
+  "link_prefix": "",
+  "parse_listing": "page",
+  "object_selector": ".listing__itemTitleWrapper",
+  "object_link_selector": ".listing__itemTitle",
+  "add_site_to_object_link": false,
+  "image_selector": ".lineGallery>img",
+  "image_src_attr": "data-src",
+  "site_for": "rentatime",
+  "rent": true,
+  "cookies_file": "irr_cookies.txt",
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": ".productPage__price",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "attribute": "content",
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+
+    },
+    {
+      "field": "area",
+      "parse_cond": "Общая площадь:",
+      "parse_tag": ".productPage__infoColumnBlockText",
+      "conversion": [
+        "match",
+        "spaces",
+        "floatval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)м\/"
+    },
+    {
+      "field": "lat",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lat\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lng\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".js-scrollToMap",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "parse_tag": "li[itemprop=\"itemListElement\"]",
+      "parse_cond": "Продажа коммерческой недвижимости",
+      "next": "li",
+      "conversion": [
+        "trim",
+        "type_normalization"
+      ]
+    },
+    {
+      "field": "description",
+      "parse_tag": ".productPage__descriptionText"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    }
+  ]
+}

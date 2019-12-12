@@ -1,0 +1,181 @@
+{
+  "site": "www.domofond.ru",
+  "parse_link": "https://www.domofond.ru/arenda-kommercheskay-nedvizhimost-",
+  "parse_link_suffix": "?Page=",
+  "parse_shift": "1",
+  "link_prefix": "https://",
+  "parse_listing": "page",
+  "object_selector": "script:contains('__INITIAL_DATA__')",
+  "select_json": "/window\\.__INITIAL_DATA__ = (.*)/",
+  "object_in_json": "itemsState",
+  "is_list_json": true,
+  "object_selector_is_link": true,
+  "object_link_selector": "",
+  "rent": true,
+  "add_site_to_object_link": true,
+  "image_selector": "galleries",
+  "site_for": "rentatime",
+  "city_addition": [
+    "moskva-c3584",
+    "sankt_peterburg-c3414",
+    "moskovskaya_oblast-r81",
+    "leningradskaya_oblast-r80",
+    "adygeya-r36",
+    "altayskiy_kray-r68",
+    "amurskaya_oblast-r72",
+    "arhangelskaya_oblast-r70",
+    "astrahanskaya_oblast-r19",
+    "bashkortostan-r41",
+    "belgorodskaya_oblast-r11",
+    "bryanskaya_oblast-r66",
+    "buryatiya-r9",
+    "vladimirskaya_oblast-r8",
+    "volgogradskaya_oblast-r13",
+    "vologodskaya_oblast-r12",
+    "voronezhskaya_oblast-r73",
+    "dagestan-r44",
+    "evreyskaya_ao-r67",
+    "zabaykalskiy_kray-r6",
+    "ivanovskaya_oblast-r18",
+    "ingushetiya-r15",
+    "irkutskaya_oblast-r17",
+    "kabardino_balkariya-r16",
+    "kaliningradskaya_oblast-r69",
+    "kalmykiya-r10",
+    "kaluzhskaya_oblast-r14",
+    "kamchatskiy_kray-r1",
+    "karachaevo_cherkesiya-r20",
+    "kareliya-r33",
+    "kemerovskaya_oblast-r71",
+    "kirovskaya_oblast-r27",
+    "komi-r77",
+    "kostromskaya_oblast-r23",
+    "krasnodarskiy_kray-r24",
+    "krasnoyarskiy_kray-r74",
+    "krym-r82",
+    "kurganskaya_oblast-r22",
+    "kurskaya_oblast-r30",
+    "lipetskaya_oblast-r28",
+    "magadanskaya_oblast-r25",
+    "mariy_el-r2",
+    "mordoviya-r31",
+    "murmanskaya_oblast-r29",
+    "nenetskiy_ao-r75",
+    "nizhegorodskaya_oblast-r26",
+    "novgorodskaya_oblast-r21",
+    "novosibirskaya_oblast-r78",
+    "omskaya_oblast-r37",
+    "orenburgskaya_oblast-r4",
+    "orlovskaya_oblast-r46",
+    "penzenskaya_oblast-r38",
+    "permskiy_kray-r42",
+    "primorskiy_kray-r45",
+    "pskovskaya_oblast-r39",
+    "respublika_altay-r63",
+    "rostovskaya_oblast-r43",
+    "ryazanskaya_oblast-r62",
+    "samarskaya_oblast-r56",
+    "saratovskaya_oblast-r79",
+    "saha_yakutiya-r34",
+    "sahalinskaya_oblast-r61",
+    "sverdlovskaya_oblast-r60",
+    "severnaya_osetiya-r40",
+    "smolenskaya_oblast-r53",
+    "stavropolskiy_kray-r50",
+    "tambovskaya_oblast-r58",
+    "tatarstan-r35",
+    "tverskaya_oblast-r48",
+    "tomskaya_oblast-r47",
+    "tulskaya_oblast-r57",
+    "tyva-r76",
+    "tyumenskaya_oblast-r59",
+    "udmurtiya-r49",
+    "ulyanovskaya_oblast-r51",
+    "habarovskiy_kray-r52",
+    "hakasiya-r32",
+    "hanty_mansiyskiy_ao-r54",
+    "chelyabinskaya_oblast-r55",
+    "chechenskaya_respublika-r3",
+    "chuvashiya-r64",
+    "chukotskiy_ao-r65",
+    "yamalo_nenetskiy_ao-r5",
+    "yaroslavskaya_oblast-r7"
+  ],
+  "fields": [
+    {
+      "field": "price",
+      "prop": "priceValue",
+      "conversion": [
+        "spaces",
+        "intval"
+      ]
+    },
+    {
+      "field": "area",
+      "prop": "areaString",
+      "conversion": [
+        "spaces",
+        "floatval"
+      ]
+    },
+    {
+      "field": "lat",
+      "prop": [
+        "location",
+        "latitude"
+      ]
+    },
+    {
+      "field": "lon",
+      "prop": [
+        "location",
+        "longitude"
+      ]
+    },
+    {
+      "field": "address",
+      "prop": "address",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "prop": "title",
+      "conversion": [
+        "match",
+        "trim",
+        "type_normalization"
+      ],
+      "match": "\/(.*)\\,\/"
+    },
+    {
+      "field": "description",
+      "prop": "description"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "phone",
+      "prop": [
+        "agent",
+        "telephone"
+      ]
+    },
+    {
+      "field": "email",
+      "prop": [
+        "agent",
+        "email"
+      ]
+    }
+  ]
+}

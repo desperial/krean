@@ -1,0 +1,218 @@
+{
+  "site": "100realt.ru",
+  "parse_link": "https://100realt.ru/",
+  "parse_link_suffix": "?page=",
+  "parse_shift": "1",
+  "link_prefix": "https://",
+  "parse_listing": "page",
+  "object_selector": ".c__housing",
+  "object_link_selector": ".c__housing-img>a",
+  "add_site_to_object_link": true,
+  "image_selector": ".carousel-inner img",
+  "site_for": "rentatime",
+  "rent": true,
+  "stop_condition": {
+    "selector": "ul.pager>li.selected>a",
+    "stop_value": "1"
+  },
+  "city_addition": [
+    "adygeya",
+    "altay",
+    "altayskiy-kray",
+    "amurskaya-oblast",
+    "arhangelskaya-oblast",
+    "astrahanskaya-oblast",
+    "bashkortostan",
+    "belgorodskaya-oblast",
+    "bryanskaya-oblast",
+    "buryatiya",
+    "vladimirskaya-oblast",
+    "volgogradskaya-oblast",
+    "vologodskaya-oblast",
+    "voronezhskaya-oblast",
+    "dagestan",
+    "evreyskaya-ao",
+    "zabaykalskiy-kray",
+    "ivanovskaya-oblast",
+    "ingushetiya",
+    "irkutskaya-oblast",
+    "kabardino-balkariya",
+    "kaliningradskaya-oblast",
+    "kalmykiya",
+    "kaluzhskaya-oblast",
+    "kamchatskiy-kray",
+    "karachaevo-cherkesiya",
+    "kareliya",
+    "kemerovskaya-oblast",
+    "kirovskaya-oblast",
+    "komi",
+    "kostromskaya-oblast",
+    "krasnodarskiy-kray",
+    "krasnoyarskiy-kray",
+    "krym",
+    "kurganskaya-oblast",
+    "kurskaya-oblast",
+    "leningradskaya-oblast",
+    "lipetskaya-oblast",
+    "magadanskaya-oblast",
+    "mariy-el",
+    "mordoviya",
+    "moskovskaya-oblast",
+    "murmanskaya-oblast",
+    "nenetskiy-ao",
+    "nizhegorodskaya-oblast",
+    "novgorodskaya-oblast",
+    "novosibirskaya-oblast",
+    "omskaya-oblast",
+    "orenburgskaya-oblast",
+    "orlovskaya-oblast",
+    "penzenskaya-oblast",
+    "permskiy-kray",
+    "primorskiy-kray",
+    "pskovskaya-oblast",
+    "rostovskaya-oblast",
+    "ryazanskaya-oblast",
+    "samarskaya-oblast",
+    "saratovskaya-oblast",
+    "saha-yakutiya",
+    "sahalinskaya-oblast",
+    "sverdlovskaya-oblast",
+    "severnaya-osetiya",
+    "smolenskaya-oblast",
+    "stavropolskiy-kray",
+    "tambovskaya-oblast",
+    "tatarstan",
+    "tverskaya-oblast",
+    "tomskaya-oblast",
+    "tulskaya-oblast",
+    "tyva",
+    "tyumenskaya-oblast",
+    "udmurtiya",
+    "ulyanovskaya-oblast",
+    "habarovskiy-kray",
+    "hakasiya",
+    "hanty-mansiyskiy-ao",
+    "chelyabinskaya-oblast",
+    "chechenskaya-respublika",
+    "chuvashiya",
+    "chukotskiy-ao",
+    "yamalo-nenetskiy-ao",
+    "yaroslavskaya-oblast"
+  ],
+  "parse_link_types": [
+    {
+      "link": "arenda-ofisov-",
+      "text": "офис"
+    },
+    {
+      "link": "arenda-skladov-",
+      "text": "склад"
+    },
+    {
+      "link": "arenda-pomescheniy-pod-proizvodstvo-",
+      "text": "производство"
+    },
+    {
+      "link": "arenda-pomescheniy-svobodnogo-naznacheniya-",
+      "text": "ПСН"
+    },
+    {
+      "link": "arenda-torgovyh-ploschadey-",
+      "text": "торговая площадь"
+    }
+  ],
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": ".hv__prices:first td:first",
+      "conversion": [
+        "match",
+        "spaces",
+        "intval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "area",
+      "parse_tag": ".hv__param",
+      "parse_cond": "Площадь:",
+      "conversion": [
+        "match",
+        "spaces",
+        "floatval"
+      ],
+      "match": "\/(\\d[\\d\\.\\s,]*[^<sup>])\/"
+    },
+    {
+      "field": "lat",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lat\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": ".js-productPageMap",
+      "conversion": [
+        "match"
+      ],
+      "attribute": "data-map-info",
+      "match": "\/\"lng\":\"(\\d[-\\d\\.\\s,]*)\/"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".hv__h2",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "fixed": "Офис",
+      "parse_tag": false,
+      "conversion": [
+        "type_linked"
+      ]
+    },
+    {
+      "field": "description",
+      "parse_tag": ".row",
+      "conversion": [
+        "match"
+      ],
+      "match": "\/<h3\\s*class=\"hv__h3\">Описание<\\\/h3>([\\s\\S\\w\\W]*?)<div\\s*class=\"row\">\/"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "lat",
+      "parse_tag": "script",
+      "parse_cond": "showYandexMap",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/([\\-0-9.]*),\/"
+    },
+    {
+      "field": "lon",
+      "parse_tag": "script",
+      "parse_cond": "showYandexMap",
+      "conversion": [
+        "match",
+        "floatval"
+      ],
+      "match": "\/,\\s*([\\-0-9.]*)\/"
+    }
+  ]
+}

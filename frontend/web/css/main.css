@@ -1,33 +1,38 @@
+:root {
+    --main-bg-color: #555555;
+}
+
 * {
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	position: relative;
-	height: 100%;
-	min-width: 1200px;
-	margin: 0;
-	
-	color: #444;
-	font-size: 12px;
-	font-family: 'Trebuchet MS';
+    position: relative;
+    height: 100%;
+    min-width: 1200px;
+    margin: 0;
+
+    color: #444;
+    font-size: 12px;
+    font-family: 'Trebuchet MS';
 }
 
 /* Оформление ссылок */
 a {
-	color: #337ab7;
-	text-decoration: none;
-	outline: none;
+    color: #337ab7;
+    text-decoration: none;
+    outline: none;
 }
+
 a:hover {
-	color: #23527c;
-	text-decoration: underline;
+    color: #23527c;
+    text-decoration: underline;
 }
 
 /* Оформление заголовков */
@@ -37,409 +42,489 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	font-weight: 100;
-	font-family: Roboto;
+    margin: 0;
+    font-weight: 100;
+    font-family: Roboto;
 }
+
 h1 {
-	margin-bottom: 10px;
-	font-size: 200%;
+    margin-bottom: 10px;
+    font-size: 200%;
 }
+
 h2 {
-	margin-bottom: 8px;
-	font-size: 180%;
+    margin-bottom: 8px;
+    font-size: 180%;
 }
+
 h3 {
-	margin-bottom: 6px;
-	font-size: 160%;
+    margin-bottom: 6px;
+    font-size: 160%;
 }
+
 h4 {
-	margin-bottom: 4px;
-	font-size: 140%;
+    margin-bottom: 4px;
+    font-size: 140%;
 }
+
 h5 {
-	margin-bottom: 2px;
-	font-size: 120%;
+    margin-bottom: 2px;
+    font-size: 120%;
 }
+
 h6 {
-	font-size: 100%;
+    font-size: 100%;
 }
 
 label {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 input[type="checkbox"], input[type="radio"] {
-	cursor: pointer;
-	vertical-align: middle;
+    cursor: pointer;
+    vertical-align: middle;
 }
 
 em, i {
-	font-style: italic;
+    font-style: italic;
 }
 
 strong, b {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 img {
-	max-width: 100%;
-	vertical-align: middle;
-	border: none;
+    max-width: 100%;
+    vertical-align: middle;
+    border: none;
 }
 
 a, input, textarea, select, button {
-	outline: none;
+    outline: none;
 }
 
 /* Символ рубля */
 span.ruble {
-	position: relative;
+    position: relative;
 }
+
 span.ruble:after {
-	content: '-';
-	position: absolute;
-	top: 0.25ex;
-	left: -0.1ex;
+    content: '-';
+    position: absolute;
+    top: 0.25ex;
+    left: -0.1ex;
 }
 
 /* Очистка обтекания... */
 .clear {
-	clear: both;
+    clear: both;
 }
 
 /* В контейнере происходит процесс генерации содержимого */
 .on-background-process:after {
-	z-index: 1;
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background: rgba(255,255,255,0.75) url('./svg-loaders/oval-inverted.svg') center center no-repeat;
-	background-size: 64px;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.75) url('./svg-loaders/oval-inverted.svg') center center no-repeat;
+    background-size: 64px;
 }
 
 /* Меню страны (инициализируется при клике по стране внутри карты) */
 .special-country-menu {
-	width: 220px;
-	background-color: rgba(0,0,0,0.25);
+    width: 220px;
+    background-color: rgba(0, 0, 0, 0.25);
 }
+
 .special-country-menu-content {
-	background-color: white;
+    background-color: white;
 }
+
 .special-country-menu,
 .special-country-menu-content {
-	padding: 5px;
+    padding: 5px;
 }
+
 .special-country-menu-header {
-	margin: 0 0 10px 0;
-	font-weight: bold;
+    margin: 0 0 10px 0;
+    font-weight: bold;
 }
+
 .special-country-menu-items p {
-	margin: 0 0 5px 0;
+    margin: 0 0 5px 0;
 }
+
 .special-country-menu-items p:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* Визуализация загрузки сервиса */
 .on-window-load {
-	z-index: 3;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 3px;
-	background-color: #57cdff;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #57cdff;
 }
+
 .on-window-load.loaded {
-	display: none;
+    display: none;
 }
 
 /* Шапка */
 .overhill-header {
-	z-index: 2;
-	position: relative;
-	background-color: white;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    z-index: 2;
+    position: relative;
+    background-color: #555555;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
+
 .overhill-header .overhill-header-left,
 .overhill-header .overhill-header-right {
-	height: 60px;
+    height: 60px;
 }
+
 .overhill-header .overhill-header-left {
-	float: left;
-	margin-left: 10px;
+    float: left;
+    margin-left: 10px;
 }
+
 .overhill-header .overhill-header-right {
-	float: right;
-	margin-right: 20px;
+    float: right;
+    margin-right: 20px;
 }
 
 .overhill-header .logo {
-	float: left;
-	width: 199px;
-	height: 100%;
-	margin: 0 10px 0 0;
-}
-.overhill-header .logo a {
-	display: block;
-	height: 100%;
-	background: transparent url('/imgs/logo41.png') center left no-repeat;
+    float: left;
+    width: 199px;
+    height: 100%;
+    margin: 0 10px 0 0;
 }
 
+
 .overhill-header .phone {
-	float: left;
-	margin: 0 0 0 10px;
+    float: left;
+    margin: 0 0 0 10px;
 }
+
 .overhill-header .phone span {
-	color: black;
-	font-size: 20px;
-	font-weight: 100;
-	font-family: Roboto;
-	line-height: 60px;
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: Roboto;
+    line-height: 60px;
 }
 
 .overhill-header .menu {
-	float: left;
+    float: left;
+    color: white;
 }
+
+.overhill-header .menu a:visited {
+    float: left;
+    color: white;
+}
+
 .overhill-header .menu ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
+
 .overhill-header .menu ul:after {
-	content: '';
-	display: table;
-	clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
+
 .overhill-header .menu ul li {
-	float: left;
-	position: relative;
+    float: left;
+    position: relative;
+    background: #555555;
 }
+
 .overhill-header .menu ul li:hover {
-	background-color: #fafafa;
+    background-color: #353535;
 }
+
 .overhill-header .menu ul li a,
 .overhill-header .menu ul li span {
-	display: inline-block;
-	padding: 0 20px;
-	font-size: 14px;
-	line-height: 60px;
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 14px;
+    line-height: 60px;
+    color: white;
+    text-decoration: none;
 }
+
 .overhill-header .menu ul li ul {
-	display: none;
-	position: absolute;
-	top: 60px;
-	left: 0;
-	width: 250px;
-	border: 1px solid #dadada;
-	background-color: white;
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    border: 1px solid #555555;
 }
+
 .overhill-header .menu ul li:hover ul {
-	display: inherit;
+    display: inherit;
 }
+
 .overhill-header .menu ul li ul li {
-	float: none;
+    float: none;
 }
+
 .overhill-header .menu ul li ul li a,
 .overhill-header .menu ul li ul li span {
-	width: 100%;
-	line-height: 3;
+    width: 100%;
+    line-height: 3;
 }
+
 .overhill-header .menu ul li .menu-countries {
-	display: none;
-	position: absolute;
-	top: 60px;
-	left: 0;
-	width: 450px;
-	padding: 10px;
-	border: 1px solid #dadada;
-	background-color: white;
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 450px;
+    padding: 10px;
+    border: 1px solid #dadada;
+    background-color: white;
 }
+
 .overhill-header .menu ul li:hover .menu-countries {
-	display: block;
+    display: block;
 }
+
 .overhill-header .menu ul li .menu-countries .menu-countries-items:after {
-	content: '';
-	display: table;
-	clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
+
 .overhill-header .menu ul li .menu-countries .menu-countries-items .country {
-	float: left;
-	width: 50%;
+    float: left;
+    width: 50%;
 }
+
 .overhill-header .menu ul li .menu-countries .menu-countries-items .country a {
-	padding: 0 5px;
-	line-height: 2
+    padding: 0 5px;
+    line-height: 2
 }
+
 .overhill-header .menu ul li .menu-countries .menu-countries-prompt {
-	margin-top: 10px;
+    margin-top: 10px;
 }
+
 .overhill-header .menu ul li .menu-countries .menu-countries-prompt span {
-	padding: 0;
-	color: #888;
-	font-size: 12px;
-	line-height: 1.2;
+    padding: 0;
+    color: #888;
+    font-size: 12px;
+    line-height: 1.2;
 }
 
 /* Приложение */
 .overhill-app {
-	position: absolute;
-	top: 60px;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	overflow-x: hidden; /* для того, чтобы список объявлений и,
-                         * и карточка объекта недвижимости, находясь
-						 * вне области видимости (right: -x) не создавали
-						 * горизонтальную полосу прокрутки... */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    display: none;
+    /* для того, чтобы список объявлений и,
+                            * и карточка объекта недвижимости, находясь
+                            * вне области видимости (right: -x) не создавали
+                            * горизонтальную полосу прокрутки... */
+}
+.logo_fixed {
+    position: absolute;
+    z-index: 10100;
+    left: 0;
+    top: 0;
 }
 
-.overhill-app-left {
-	position: absolute;
-	top: 0;
-	right: 600px;
-	bottom: 0;
-	left: 0;
+.logo a {
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    background: transparent url('/imgs/logo44.png') center left no-repeat;
 }
+.overhill-app-left {
+    position: absolute;
+    top: 0;
+    right: 600px;
+    bottom: 0;
+    left: 0;
+}
+
 .overhill-app-right {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	width: 600px;
-	box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
-	-moz-box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
-	-webkit-box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 600px;
+    box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .overhill-app-left.without-right {
-	right: 0;
+    right: 0;
 }
+
 .overhill-app-right.without-left {
-	left: 0;
-	width: auto;
+    left: 0;
+    width: auto;
 }
 
 .overhill-app-right a.overhill-app-right-toggle {
-	position: absolute;
-	top: 28px;
-	left: -20px;
-	width: 20px;
-	height: 110px;
-	line-height: 110px;
-	background: #57cdff;
-	color: #fff;
-	text-align: center;
-	font-size: 26px;
+    position: absolute;
+    top: 28px;
+    left: -20px;
+    width: 20px;
+    height: 110px;
+    line-height: 110px;
+    background: #555555;
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
 }
+
 .overhill-app-right a.overhill-app-right-toggle:before,
 .overhill-app-right a.overhill-app-right-toggle:after {
-	content: '';
-	position: absolute;
-	right: 0px;
-	border: 10px solid transparent;
-	border-right: 20px solid #57cdff;
+    content: '';
+    position: absolute;
+    right: 0px;
+    border: 10px solid transparent;
+    border-right: 20px solid #555555;
 }
+
 .overhill-app-right a.overhill-app-right-toggle:before {
-	top: -10px;
+    top: -10px;
 }
+
 .overhill-app-right a.overhill-app-right-toggle:after {
-	bottom: -10px;
+    bottom: -10px;
 }
 
 .overhill-app-right .overhill-search-ads-container {
-	background-color: #57cdff;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0 2px 3px rgba(0,0,0,0.2);
-	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    background-color: #555555;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
+
 .overhill-app-right .overhill-search-ads-container .overhill-search-ads-basic-container,
 .overhill-app-right .overhill-search-ads-container .overhill-search-ads-advanced-container {
-	float: left;
-	width: 600px;
+    float: left;
+    width: 600px;
 }
+
 .overhill-app-right .overhill-search-ads-container .overhill-search-ads-advanced-container {
-	display: none;
 }
+
 .overhill-app-right.without-left .overhill-search-ads-container .overhill-search-ads-advanced-container {
-	display: block !important; /* если левая часть приложения скрыта, расширенный поиск автоматически отображается */
+    display: block !important; /* если левая часть приложения скрыта, расширенный поиск автоматически отображается */
 }
+
 .overhill-app-right.without-left .overhill-search-ads-container .search-ads-field-on-show-advanced {
-	display: none; /* если левая часть приложения скрыта, кнопка инициализирующая событие отображающее форму расширенного поиска автоматически скрывается */
+    display: none; /* если левая часть приложения скрыта, кнопка инициализирующая событие отображающее форму расширенного поиска автоматически скрывается */
 }
+
 .overhill-app-right .overhill-search-ads-container .overhill-search-ads-basic-content,
 .overhill-app-right .overhill-search-ads-container .overhill-search-ads-advanced-content {
-	padding: 10px 20px;
-	color: white;
+    padding: 10px 20px;
+    color: white;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-legend {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-label {
-	margin-right: 5px;
+    margin-right: 5px;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-group {
-	margin: 10px 0;
+    margin: 10px 0;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-price {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-area {
-	float: right;
+    float: right;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal-all,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal-rent,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal-buy {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal-rent,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal-buy {
-	margin-left: 20px;
+    margin-left: 20px;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-actions {
-	float: right;
+    float: right;
+    display: flex;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-actions .search-ads-field-on-reset,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-actions .search-ads-field-on-show-advanced {
-	float: left;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-actions .search-ads-field-on-show-advanced {
-	margin-right: 27px;
+    margin-right: 27px;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-actions a {
-	color: white;
-	text-decoration: none;
-	border-bottom: 1px dotted white;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px dotted white;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-country {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-type {
-	float: right;
+    float: right;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-view {
-	float: left;
+    float: right;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-group {
-	float: right;
+    float: right;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-text input {
-	width: 100%;
+    width: 100%;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-price input,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-area input {
-	width: 120px;
+    width: 120px;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-deal input {
-	margin: 0;
+    margin: 0;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-text input,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-price input,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-area input,
@@ -447,52 +532,67 @@ span.ruble:after {
 .overhill-app-right .overhill-search-ads-container .search-ads-field-type select,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-view select,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-group select {
-	height: 26px;
-	padding: 0 10px;
-	border: 1px solid #d4d2d2;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
-	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
-	-webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
-	color: #999;
-	vertical-align: middle;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid #d4d2d2;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    vertical-align: middle;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-text input:focus,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-price input:focus,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-area input:focus {
-	color: #444;
+    color: #fff;
 }
+
 .overhill-app-right .overhill-search-ads-container .search-ads-field-country select,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-type select,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-view select,
 .overhill-app-right .overhill-search-ads-container .search-ads-field-group select {
-	width: 250px;
+    width: 250px;
 }
 
 .overhill-app-right .overhill-list-ads-container {
-	position: absolute;
-	top: 0; /* высота корректируется автоматически по средствам javascript... */
-	right: 0;
-	bottom: 0;
-	left: 0;
+    position: absolute;
+    top: 0; /* высота корректируется автоматически по средствам javascript... */
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
+
 .overhill-app-right .overhill-list-ads-container .mCSB_container {
-	margin-right: 0;
+    margin-right: 0;
 }
+
 .overhill-app-right .overhill-list-ads-container .mCSB_scrollTools {
-	margin-top: 5px;
-	margin-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item {
-	position: relative;
-	padding: 20px;
-	border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #454545;
+    background: var(--main-bg-color);
+    color: white;
+}
+
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item a:visited {
+    color: white;
+}
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item a {
+    color: white;
 }
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item:hover {
-	background-color: #fffcdd;
+    background-color: #353535;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-1,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-2,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-3,
@@ -500,737 +600,978 @@ span.ruble:after {
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-5,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-6,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-7 {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-groups-separator {
-	height: 15px;
+    height: 15px;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-1 {
-	width: 190px; /* 170 (ширина фотографии) + 20 (отступ) */
+    width: 190px; /* 170 (ширина фотографии) + 20 (отступ) */
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-2 {
-	display: none;
-	width: 170px; /* (50 * 3 (ширина фотографии умноженная на количество в ряду)) + 20 (отступ) */
+    display: none;
+    width: 170px; /* (50 * 3 (ширина фотографии умноженная на количество в ряду)) + 20 (отступ) */
 }
+
 .overhill-app-right.without-left .overhill-list-ads-container .overhill-list-ads-content .item .item-group-2 {
-	display: block;
+    display: block;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-3 {
-	width: 370px; /* 600 (стандартная ширина контейнера) - 40 (отступы по бокам) - 190 (изображение) */
-	padding: 0 40px 0 0;
+    width: 370px; /* 600 (стандартная ширина контейнера) - 40 (отступы по бокам) - 190 (изображение) */
+    padding: 0 40px 0 0;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-4 {
-	display: none;
-	width: 430px; /* максимальный остаток при минимальном разрешении экрана в 1200 пикселей */
+    display: none;
+    width: 430px; /* максимальный остаток при минимальном разрешении экрана в 1200 пикселей */
 }
+
 .overhill-app-right.without-left .overhill-list-ads-container .overhill-list-ads-content .item .item-group-4 {
-	display: block;
+    display: block;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-6 {
-	margin-left: 190px;
+    margin-left: 190px;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-6,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-group-7 {
-	width: 170px;
+    width: 170px;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-location .item-data-location-country {
-	font-size: 18px;
-	font-weight: 100;
-	font-family: Roboto;
-	line-height: 1;
+    font-size: 18px;
+    font-weight: 100;
+    font-family: Roboto;
+    line-height: 1;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-location .item-data-location-country,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-location .item-data-location-address {
-	margin: 0 0 10px 0;
+    margin: 0 0 10px 0;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-location .item-data-location-address a {
-	color: #444;
+    color: #e6e6e6;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-location .item-data-location-address a:hover {
-	color: #000;
+    color: white;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-area,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price-per-meter {
-	float: left;
+    float: left;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price {
-	width: 40%; /* как правило, цена формируется длинная, особенно в RUR валюте, поэтому контейнер для цены будет чуть шире остальных */
+    width: 40%; /* как правило, цена формируется длинная, особенно в RUR валюте, поэтому контейнер для цены будет чуть шире остальных */
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-area,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price-per-meter {
-	width: 30%;
+    width: 30%;
 }
+
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price span.number,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-area span.number,
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price-per-meter span.number {
-	font-size: 16px;
-}
-.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price span.note {
-	display: block;
-}
-.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-description {
-	color: #999;
-}
-.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-management i {
-	display: inline-block;
-	width: 16px;
-	color: #999;
-}
-.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-management a {
-	display: inline-block;
+    font-size: 16px;
 }
 
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-info .item-data-info-price span.note {
+    display: block;
+}
+
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-data-description {
+    color: #999;
+}
+
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-management i {
+    display: inline-block;
+    width: 16px;
+    color: #999;
+}
+
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content .item .item-management a {
+    display: inline-block;
+}
+.overhill-app-right .overhill-list-ads-container .overhill-list-ads-content {
+    background: var(--main-bg-color);
+}
+a.dark-back {
+    background: var(--main-bg-color) !important;
+}
+.selected-dark-back {
+    background: #353535;
+}
+.green-back, .green-back>li>a {
+    background: #47a447 !important;
+}
 .overhill-app-right .overhill-list-ads-container .overhill-list-ads-on-more {
-	display: inline-block;
-	width: 100%;
-	margin: 10px 0;
-	font-size: 18px;
-	font-weight: 100;
-	font-family: Roboto;
-	text-align: center;
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 100;
+    font-family: Roboto;
+    text-align: center;
 }
 
 /* Контейнер объекта недвижимости */
 .overhill-ad-container {
-	display: none;
-	position: absolute;
-	top: 0;
-	right: -900px;
-	bottom: 0;
-	width: 900px;
-	background-color: white;
-	box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
-	-moz-box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
-	-webkit-box-shadow: -5px 0 5px 0 rgba(0,0,0,0.1);
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -900px;
+    bottom: 0;
+    width: 900px;
+    background-color: white;
+    box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -5px 0 5px 0 rgba(0, 0, 0, 0.1);
 }
+
 .overhill-ad-container a.overhill-ad-toggle {
-	position: absolute;
-	top: 158px;
-	left: -20px;
-	width: 20px;
-	height: 110px;
-	line-height: 110px;
-	background: #fff;
-	color: #57cdff;
-	text-align: center;
-	font-size: 26px;
-	box-shadow: -1px 0 15px rgba(0,0,0,0.25);
-	-moz-box-shadow: -1px 0 15px rgba(0,0,0,0.25);
-	-webkit-box-shadow: -1px 0 15px rgba(0,0,0,0.25);
+    position: absolute;
+    top: 158px;
+    left: -20px;
+    width: 20px;
+    height: 110px;
+    line-height: 110px;
+    background: #fff;
+    color: #57cdff;
+    text-align: center;
+    font-size: 26px;
+    box-shadow: -1px 0 15px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: -1px 0 15px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: -1px 0 15px rgba(0, 0, 0, 0.25);
 }
+
 .overhill-ad-container a.overhill-ad-toggle:hover {
-	color: black;
+    color: black;
 }
+
 .overhill-ad-container a.overhill-ad-toggle:before,
 .overhill-ad-container a.overhill-ad-toggle:after {
-	content: '';
-	position: absolute;
-	right: 0px;
-	border: 10px solid transparent;
-	border-right: 20px solid #fff;
+    content: '';
+    position: absolute;
+    right: 0px;
+    border: 10px solid transparent;
+    border-right: 20px solid #fff;
 }
+
 .overhill-ad-container a.overhill-ad-toggle:before {
-	top: -10px;
+    top: -10px;
 }
+
 .overhill-ad-container a.overhill-ad-toggle:after {
-	bottom: -10px;
+    bottom: -10px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper {
-	position: relative;
-	height: 100%;
-	overflow-y: auto;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
 }
+
 .overhill-ad-container .overhill-ad-wrapper a.overhill-ad-close {
-	position: absolute;
-	top: 20px;
-	right: 16px;
-	width: 32px;
-	height: 32px;
-	border-radius: 32px;
-	-moz-border-radius: 32px;
-	-webkit-border-radius: 32px;
-	background: #fff url('./icons/close.png') center center no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    -moz-border-radius: 32px;
+    -webkit-border-radius: 32px;
+    background: #fff url('./icons/close.png') center center no-repeat;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content {
-	padding: 20px;
+    padding: 20px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .page-not-found-title {
-	margin: 0 0 25px 0;
-	color: #ff5757;
-	font-size: 26px;
-	font-weight: bold;
+    margin: 0 0 25px 0;
+    color: #ff5757;
+    font-size: 26px;
+    font-weight: bold;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .page-not-found-description {
-	font-size: 16px;
+    font-size: 16px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item {
-	font-size: 13px;
+    font-size: 13px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-left,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-right {
-	float: left;
+    float: left;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-left {
-	width: 350px;
-	margin-right: 20px;
+    width: 350px;
+    margin-right: 20px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-right {
-	width: 460px;
+    width: 460px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider {
-	position: relative;
+    position: relative;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.prev,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.next {
-	z-index: 1;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 30px;
-	background-color: rgba(0,0,0,0.5);
-	color: #57cdff;
-	font-size: 22px;
-	text-align: center;
-	text-decoration: none;
-	line-height: 263px; /* высота родительского контейнера */
-	cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #57cdff;
+    font-size: 22px;
+    text-align: center;
+    text-decoration: none;
+    line-height: 263px; /* высота родительского контейнера */
+    cursor: pointer;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.prev:active,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.next:active {
-	line-height: 264px;
+    line-height: 264px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.prev {
-	left: 0;
+    left: 0;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider a.next {
-	right: 0;
+    right: 0;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider ul {
-	overflow: hidden;
-	width: 350px;
-	height: 263px;
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    overflow: hidden;
+    width: 350px;
+    height: 263px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-photos .simple-slider ul li a {
-	display: block;
-	position: relative;
-	width: 100%;
-	height: 100%;
-	cursor: -moz-zoom-in;
-	cursor: -webkit-zoom-in;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
 }
 
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .google-streetview {
-	display: none; /* отображается автоматически, в случаи если панорама подгружена... */
-	width: 350px;
-	height: 263px;
-	margin-top: 25px;
+    display: none; /* отображается автоматически, в случаи если панорама подгружена... */
+    width: 350px;
+    height: 263px;
+    margin-top: 25px;
 }
 
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads {
-	padding: 15px;
-	margin-top: 25px;
-	background-color: #eaeaea;
+    padding: 15px;
+    margin-top: 25px;
+    background-color: #eaeaea;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-header,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-header {
-	margin-bottom: 15px;
-	font-size: 22px;
-	font-weight: 100;
-	font-family: Roboto;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 100;
+    font-family: Roboto;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-name,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-feedback {
-	font-size: 14px;
-	line-height: 28px;
+    font-size: 14px;
+    line-height: 28px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-name i {
-	margin-right: 3px;
+    margin-right: 3px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-phone {
-	margin-top: 15px;
-	margin-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-phone a {
-	display: inline-block;
-	padding: 10px 20px 10px 36px;
-	background: #8cc700 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARdJREFUeNps0b1KA0EUhuHdJcEfMJomEBshClYiWGhSiYJNECsJ8QYs7Cy9CxuvwdyBhagXoRArixQKMf4gRGExmbxHvsXJZg88u2dn5hxmZkPnXEA00MQKSpjDNCLYghh9fOAZj2jhNqTBNskdwmA8euiqSRnzqflfbOV4VDOK77GhRRZTeNAOk7DanYAdLKHj/uMVB7hBD084wSG+vXVvWLYGJsIiivo+cuPRhR03jwrWMPN3fypIu1LhC36U17PWpgcWcKGCU42V0NZx9rXbiQbn6GOo4ji18Mw7zgDvqNpcpBvdxaz3N/JY925808utppiM5TT4GUzGNS6xir2M+S+/gf33mnKndwHHymNvPIm2PUYCDAAE+jFWOAojCwAAAABJRU5ErkJggg==') 10px center no-repeat;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	color: white;
-	font-size: 16px;
-	text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px 10px 36px;
+    background: #8cc700 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAYAAAB24g05AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARdJREFUeNps0b1KA0EUhuHdJcEfMJomEBshClYiWGhSiYJNECsJ8QYs7Cy9CxuvwdyBhagXoRArixQKMf4gRGExmbxHvsXJZg88u2dn5hxmZkPnXEA00MQKSpjDNCLYghh9fOAZj2jhNqTBNskdwmA8euiqSRnzqflfbOV4VDOK77GhRRZTeNAOk7DanYAdLKHj/uMVB7hBD084wSG+vXVvWLYGJsIiivo+cuPRhR03jwrWMPN3fypIu1LhC36U17PWpgcWcKGCU42V0NZx9rXbiQbn6GOo4ji18Mw7zgDvqNpcpBvdxaz3N/JY925808utppiM5TT4GUzGNS6xir2M+S+/gf33mnKndwHHymNvPIm2PUYCDAAE+jFWOAojCwAAAABJRU5ErkJggg==') 10px center no-repeat;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-phone a:hover {
-	background-color: #99ce1c;
+    background-color: #99ce1c;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-contact-phone a.requested {
-	background-color: #99ce1c;
-	cursor: default;
+    background-color: #99ce1c;
+    cursor: default;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .seller-ads .seller-ads-note {
-	color: #777;
-	font-size: 12px;
-	text-shadow: 1px 1px 0 #fff;
+    color: #777;
+    font-size: 12px;
+    text-shadow: 1px 1px 0 #fff;
 }
 
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads {
-	display: none;
-	margin-top: 25px;
-	padding: 15px;
-	background-color: #eaeaea;
+    display: none;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #eaeaea;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-header {
-	margin-bottom: 15px;
-	font-size: 22px;
+    margin-bottom: 15px;
+    font-size: 22px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-list .similar-ad {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-list .similar-ad:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-list .similar-ad .similar-ad-photo {
-	float: left;
-	width: 120px;
+    float: left;
+    width: 120px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-list .similar-ad .similar-ad-info {
-	float: left;
-	width: 200px;
+    float: left;
+    width: 200px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .similar-ads .similar-ads-list .similar-ad .similar-ad-info .similar-ad-address {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .banner {
-	margin-top: 25px;
+    margin-top: 25px;
 }
 
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header {
-	width: 400px; /* для того, чтобы кнопка закрытия карточки объекта не перекрывала заголовок и адрес */
+    width: 400px; /* для того, чтобы кнопка закрытия карточки объекта не перекрывала заголовок и адрес */
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header .item-header-title {
-	margin: 0 0 10px 0;
+    margin: 0 0 10px 0;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header .item-header-title {
-	font-size: 28px;
-	font-weight: 100;
-	font-family: Roboto;
-	line-height: 1;
+    font-size: 28px;
+    font-weight: 100;
+    font-family: Roboto;
+    line-height: 1;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header .item-header-address a {
-	color: #444;
+    color: #444;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-header .item-header-address a:hover {
-	color: #000;
+    color: #000;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data {
-	margin: 0 0 25px 0;
+    margin: 0 0 25px 0;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-left,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-right {
-	float: left;
+    float: left;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-left {
-	width: 40%;
-	border-bottom: 1px dotted #999;
+    width: 40%;
+    border-bottom: 1px dotted #999;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-right {
-	width: 60%;
+    width: 60%;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-left .item-data-list-label,
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-right .item-data-list-label {
-	display: inline-block;
-	position: relative;
-	top: 5px;
-	margin-top: 10px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-top: 10px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-left .item-data-list-label {
-	padding-right: 5px;
-	background-color: white;
-	color: #999;
+    padding-right: 5px;
+    background-color: white;
+    color: #999;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-data .item-data-list-right .item-data-list-label {
-	margin-left: 5px;
+    margin-left: 5px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-banner {
-	margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 .overhill-ad-container .overhill-ad-wrapper .overhill-ad-content .item .item-description {
-	line-height: 1.5;
+    line-height: 1.5;
 }
 
 /* Нижний контейнер с вкладками */
 .overhill-app-tabs {
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
+
 .overhill-app-tabs .overhill-app-tabs-bar:after {
-	content: '';
-	display: table;
-	clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
+
 .overhill-app-tabs .overhill-app-tabs-bar a.toggle {
-	float: left;
-	display: inline-block;
-	padding: 5px 0 5px 20px;
-	background-color: #1e98ff;
-	background-color: rgba(0,0,0,.5);
-	color: white;
-	font-size: 14px;
-	font-weight: 100;
-	font-family: Roboto;
-	text-decoration: none;
+    float: left;
+    display: inline-block;
+    padding: 5px 0 5px 20px;
+    background-color: #1e98ff;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-size: 14px;
+    font-weight: 100;
+    font-family: Roboto;
+    text-decoration: none;
 }
+
 .overhill-app-tabs .overhill-app-tabs-bar a.toggle:last-child {
-	padding-right: 20px;
+    padding-right: 20px;
 }
+
 .overhill-app-tabs .overhill-app-tabs-bar a.toggle.active {
-	color: #ffd21e;
+    color: #ffd21e;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box {
-	background-color: rgba(0,0,0,.5);
-	height: 160px;
-	overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
+    height: 160px;
+    overflow: hidden;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box .tab {
-	display: none;
+    display: none;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box .tab.active {
-	display: block;
+    display: block;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads:after {
-	content: '';
-	display: table;
-	clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box {
-	position: relative;
-	float: left;
-	width: 180px;
-	height: 140px;
-	margin: 10px -10px 0 20px;
-	box-shadow: 0px 0px 5px rgba(0,0,0,.5);
-	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
-	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+    position: relative;
+    float: left;
+    width: 180px;
+    height: 140px;
+    margin: 10px -10px 0 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box:hover .vip-ad-box-overlay {
-	background-color: rgba(0,0,0,.75);
+    background-color: rgba(0, 0, 0, .75);
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-box-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0,0,0,.25);
-	cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .25);
+    cursor: pointer;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box img {
-	background-color: white;
+    background-color: white;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-tool {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 5px 0 0 7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 0 0 7px;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-tool a {
-	color: #74ddff;
-	font-size: 18px;
-	text-shadow: 1px 1px 1px black;
-	text-decoration: none;
+    color: #74ddff;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px black;
+    text-decoration: none;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-tool a:hover i {
-	color: #ff7474;
+    color: #ff7474;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-price {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 7px 7px 0 0;
-	color: white;
-	font-size: 16px;
-	text-shadow: 1px 1px 1px black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 7px 7px 0 0;
+    color: white;
+    font-size: 16px;
+    text-shadow: 1px 1px 1px black;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-price i {
-	font-size: 14px;
+    font-size: 14px;
 }
+
 .overhill-app-tabs .overhill-app-tabs-box #overhill-vip-ads .vip-ad-box .vip-ad-info {
-	cursor: pointer;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding: 7px;
-	color: white;
-	text-shadow: 1px 1px 1px black;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 7px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
 }
 
 /* Waiting UI */
 .waiting {
-	z-index: 400000;
-	position: fixed;
-	top: 70px;
-	left: 10px;
-	width: 250px;
-	min-height: 52px;
-	padding: 10px 10px 10px 52px;
-	background: #57aeff url('./svg-loaders/oval.svg') 10px 50% no-repeat;
-	background-size: 32px;
-	color: #fff;
+    z-index: 400000;
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    width: 250px;
+    min-height: 52px;
+    padding: 10px 10px 10px 52px;
+    background: #57aeff url('./svg-loaders/oval.svg') 10px 50% no-repeat;
+    background-size: 32px;
+    color: #fff;
 }
 
 /* Message UI */
 .message {
-	z-index: 300000;
-	cursor: pointer;
-	position: fixed;
-	top: 140px;
-	left: 10px;
-	width: 250px;
-	min-height: 52px;
-	padding: 10px;
-	background-position: 10px 50%;
-	background-repeat: no-repeat;
-	color: #fff;
+    z-index: 300000;
+    cursor: pointer;
+    position: fixed;
+    top: 140px;
+    left: 10px;
+    width: 250px;
+    min-height: 52px;
+    padding: 10px;
+    background-position: 10px 50%;
+    background-repeat: no-repeat;
+    color: #fff;
 }
+
 .message.error {
-	background-color: #e22a40;
+    background-color: #e22a40;
 }
+
 .message.success {
-	background-color: #9bd146;
+    background-color: #9bd146;
 }
+
 .message.info {
-	background-color: #5caeee;
+    background-color: #5caeee;
 }
 
 /* Modal UI */
 .modal {
-	z-index: 200000;
-	position: absolute;
-	border: 2px solid #57cdff;
-	background-color: white;
+    z-index: 200000;
+    position: absolute;
 }
+
 .modal .modal_scaling,
 .modal .modal_close {
-	display: block;
-	position: absolute;
-	top: 11px;
-	width: 16px;
-	height: 16px;
-	background-color: transparent;
-	background-image: url('icons/modal.png');
-	background-repeat: no-repeat;
-	color: transparent;
-	text-decoration: none;
-	cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 11px;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+    background-image: url('icons/modal.png');
+    background-repeat: no-repeat;
+    color: transparent;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 .modal .modal_scaling {
-	right: 41px;
-	background-position: 0 0;
+    right: 41px;
+    background-position: 0 0;
 }
+
 .modal .modal_close {
-	right: 15px;
-	background-position: 0 -16px;
+    right: 15px;
+    background-position: 0 -16px;
 }
+
 .modal .modal_title {
-	cursor: move;
-	height: 40px;
-	line-height: 42px;
-	padding: 0 64px 0 15px;
-	color: #414852;
-	font-size: 16px;
+    cursor: move;
+    height: 40px;
+    line-height: 42px;
+    padding: 0 64px 0 15px;
+    color: #414852;
+    font-size: 16px;
 }
+
 .modal .modal_tabs {
-	padding: 15px 15px 0 15px;
-	border-bottom: 1px solid #ddd;
+    padding: 15px 15px 0 15px;
+    border-bottom: 1px solid #ddd;
 }
+
 .modal .modal_tabs .modal_tab {
-	cursor: pointer;
-	display: inline-block;
-	margin-right: 5px;
-	padding: 5px 15px;
-	border-top: 1px solid #ddd;
-	border-right: 1px solid #ddd;
-	border-left: 1px solid #ddd;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 15px;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
+
 .modal .modal_tabs .modal_tab.modal_tab_active {
-	background-color: #fafafa;
+    background-color: #fafafa;
 }
+
 .modal .modal_content {
-	padding: 15px;
-	overflow: auto;
+    padding: 15px;
+    overflow: auto;
 }
+
 .modal .modal_content .modal_content_tab {
-	height: 100%;
+    height: 100%;
 }
+
 .modal .modal_content h2 {
-	font-size: 110%;
-	font-weight: bold;
-	margin-bottom: 5px;
+    font-size: 110%;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
+
 .modal .modal_content p {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
+
 .modal .modal_content p:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 .modal .modal_buttons {
-	width: 100%;
-	padding: 15px;
-	border-top: 1px solid #ddd;
+    width: 100%;
+    padding: 15px;
+    border-top: 1px solid #ddd;
 }
+
 .modal .modal_buttons .modal_button {
-	cursor: pointer;
-	margin-right: 5px;
-	padding: 5px 15px;
-	border-width: 1px;
-	border-style: solid;
-	border-top-color: #3bd8ef;
-	border-left-color: #0191c9;
-	border-right-color: #0191c9;
-	border-bottom-color: #0189bf;
-	border-radius: 3px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	box-shadow: 0px -1px 0px 0px #27a7e5;
-	-moz-box-shadow: 0px -1px 0px 0px #27a7e5;
-	-webkit-box-shadow: 0px -1px 0px 0px #27a7e5;
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyOSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzIxQjNFMCIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzFBOTNEMyIgb2Zmc2V0PSIxIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzI5KSIgLz4KPC9zdmc+);
-	color: #ffffff;
-	font-weight: bold;
-	text-shadow: 0px -1px 0px #0189bf;
+    cursor: pointer;
+    margin-right: 5px;
+    padding: 5px 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #3bd8ef;
+    border-left-color: #0191c9;
+    border-right-color: #0191c9;
+    border-bottom-color: #0189bf;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0px -1px 0px 0px #27a7e5;
+    -moz-box-shadow: 0px -1px 0px 0px #27a7e5;
+    -webkit-box-shadow: 0px -1px 0px 0px #27a7e5;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyOSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzIxQjNFMCIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzFBOTNEMyIgb2Zmc2V0PSIxIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzI5KSIgLz4KPC9zdmc+);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0px -1px 0px #0189bf;
 }
+
 .modal .modal_buttons .modal_button:active {
-	background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiMxQTkzRDMiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMyMUIzRTAiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cyNzYpIiAvPgo8L3N2Zz4=);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImcyNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSI+CjxzdG9wIHN0b3AtY29sb3I9IiMxQTkzRDMiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMyMUIzRTAiIG9mZnNldD0iMSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2cyNzYpIiAvPgo8L3N2Zz4=);
 }
 
 /* Overlay UI */
 .overlay {
-	z-index: 100000;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(0,0,0,0.75);
-	cursor: wait;
+    z-index: 100000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    cursor: wait;
 }
 
 /* Table */
 .table {
-	width: 100%;
-	border-collapse: separate;
-	border-spacing: 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
 }
+
 .table thead tr th,
 .table tbody tr td {
-	padding: 8px;
-	border-top: 1px solid #ddd;
+    padding: 8px;
+    border-top: 1px solid #ddd;
 }
+
 .table thead tr th {
-	background-color: #eee;
-	font-weight: bold;
-	text-align: left;
+    background-color: #eee;
+    font-weight: bold;
+    text-align: left;
 }
+
 .table tbody tr td {
-	border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
+
 .table thead tr th:first-child,
 .table tbody tr td:first-child {
-	border-left: 1px solid #ddd;
+    border-left: 1px solid #ddd;
 }
+
 .table thead tr th:last-child,
 .table tbody tr td:last-child {
-	border-right: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
+
 .table tbody tr:last-child td {
-	border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
+
 .table tbody tr:nth-child(odd) td {
-	background-color: #fafafa;
+    background-color: #fafafa;
 }
+
 .table tbody tr:hover td {
-	background-color: #fffaaf;
+    background-color: #fffaaf;
 }
+
 .table tfoot tr td {
-	padding-top: 10px;
+    padding-top: 10px;
 }
 
 /* Публикация объявления */
 .modal.form-ad .error-container {
-	overflow: auto;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 15px;
-	background-color: #d00000;
-	background-color: rgba(125,0,0,0.9);
-	color: white;
-	cursor: pointer;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 15px;
+    background-color: #d00000;
+    background-color: rgba(125, 0, 0, 0.9);
+    color: white;
+    cursor: pointer;
 }
+
 .modal.form-ad .prompt {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
+
 .modal.form-ad .data-photos:after {
-	content: '';
-	display: table;
-	clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
+
 .modal.form-ad .data-photos .data-photo {
-	float: left;
-	margin: 5px 5px 0 0;
-	padding: 2px;
+    float: left;
+    margin: 5px 5px 0 0;
+    padding: 2px;
 }
+
 .modal.form-ad .data-photos .data-photo:hover {
-	background-color: #d00000;
-	cursor: pointer;
+    background-color: #d00000;
+    cursor: pointer;
 }
 
 .modal form fieldset {
-	margin: 0;
-	padding: 10px;
-	border: 1px solid #ccc;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
+
 .modal form fieldset legend {
-	padding: 0;
+    padding: 0;
 }
+
 .modal form input,
 .modal form textarea,
 .modal form select {
-	width: 100%;
-	padding: 5px 10px;
-	border: 1px solid #ccc;
-	background-color: #fff;
+    width: 100%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
 }
+
 .modal form input:focus,
 .modal form textarea:focus,
 .modal form select:focus {
-	border-color: #68a6ce;
+    border-color: #68a6ce;
 }
+
 .modal form textarea {
-	min-height: 100px;
+    min-height: 100px;
 }
 
 .modal form.form fieldset {
-	margin-bottom: 15px;
+    margin-bottom: 15px;
 }
+
 .modal form.form fieldset:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /* ... */
 .pac-container {
-	z-index: 500000;
+    z-index: 500000;
+}
+
+
+.pagination>li>a, .pagination>li>a:visited, .pagination>li>span {
+    background: var(--main-bg-color);
+    border: 1px solid #454545;
+    color: white;
+}
+.pagination>li.disabled>span {
+    background: #353535;
+    color: white;
+    border: 1px solid #454545;
+}
+.pagination>li.active>a {
+    background: #47a447;
+    border: 1px solid #47a447;
+}
+.pagination>li.active>a:hover {
+    background: #454545;
+    border: 1px solid #454545;
+}
+.pagination>li>a:hover, .pagination>li.disabled>span:hover {
+    background: #353535;
+    border: 1px solid #47a447;
+    color: #47a447;
+
+}
+.pagination>li.disabled>span:hover {
+    border: 1px solid #454545;
+}
+.pagination {
+}
+
+.dlk-radio input[type="radio"],
+.dlk-radio input[type="checkbox"]
+{
+    margin-left:-99999px;
+    display:none;
+}
+.dlk-radio input[type="radio"] + .fa ,
+.dlk-radio input[type="checkbox"] + .fa {
+    opacity:0.15
+}
+.dlk-radio input[type="radio"]:checked + .fa,
+.dlk-radio input[type="checkbox"]:checked + .fa{
+    opacity:1;
+}
+.dlk-radio input[type="radio"]:checked {
+
+}
+
+.mat-label {
+    display: block;
+    font-size: 16px;
+    transform: translateY(25px);
+    color: #ffffff;
+    transition: all 0.5s;
+}
+
+.mat-input {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 8px 0;
+    font-size: 16px;
+}
+
+.mat-div {
+    position: relative;
+}
+
+.mat-div:after, .mat-div:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #e2e2e2;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s;
+}
+
+.mat-div::after {
+    background-color: #47a447;
+    transform: scaleX(0);
+}
+
+.is-active::after {
+    transform: scaleX(1);
+}
+
+.is-active .mat-label, .is-active input {
+    color: #47a447 !important;
+}
+
+.is-completed .mat-label {
+    font-size: 12px;
+    transform: translateY(0);
+}
+select.mat-input::-ms-expand {
+    display: none;
+}
+select.mat-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }

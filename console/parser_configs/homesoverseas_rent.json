@@ -1,0 +1,94 @@
+{
+  "site": "homesoverseas.ru",
+  "parse_link": "https://homesoverseas.ru/search/?type=rent&s=15&sort=&query=&rt2%5B%5D=14&cu_rrency=643",
+  "link_prefix": "https://",
+  "parse_link_suffix": "&p=",
+  "parse_shift": "1",
+  "parse_listing": "page",
+  "rent": true,
+  "object_selector": ".offer_body",
+  "object_link_selector": "a.pic",
+  "add_site_to_object_link": true,
+  "image_selector": "#fotorama>a>img",
+  "site_for": "rentatime",
+  "fields": [
+    {
+      "field": "price",
+      "parse_tag": ".object .price .type",
+      "conversion": [
+        "spaces",
+        "match_single",
+        "intval"
+      ],
+      "next": "div.num",
+      "match": "/([0-9\\s]+)/"
+    },
+    {
+      "field": "currency",
+      "parse_tag": ".object .price .type",
+      "conversion": [
+        "match_single",
+        "currency"
+      ],
+      "next": "div.num",
+      "match": "/[0-9\\s\\ ]+([€\\w$₽]+)+/"
+    },
+    {
+      "field": "area",
+      "parse_cond": "Площадь",
+      "parse_tag": ".params_table div.th",
+      "conversion": [
+        "spaces",
+        "floatval"
+      ],
+      "next": "div.td"
+    },
+    {
+      "field": "address",
+      "parse_tag": ".breadcrumb",
+      "conversion": [
+        "trim",
+        "inner_spaces"
+      ]
+    },
+    {
+      "field": "lat",
+      "parse_cond": "var myMap = new ymaps.Map",
+      "parse_tag": "script",
+      "conversion": [
+        "lat_center"
+      ]
+    },
+    {
+      "field": "lon",
+      "parse_cond": "var myMap = new ymaps.Map",
+      "parse_tag": "script",
+      "conversion": [
+        "lon_center"
+      ]
+    },
+    {
+      "field": "country",
+      "parse_tag": ".breadcrumb li:first",
+      "conversion": [
+        "trim"
+      ]
+    },
+    {
+      "field": "type",
+      "parse_cond": "Тип недвижимости",
+      "parse_tag": ".params_table div.th",
+      "conversion": [
+        "trim",
+        "type_normalization"
+      ],
+      "next": "div.td"
+    },
+    {
+      "field": "description",
+      "parse_tag": "h3",
+      "parse_cond": "Подробное описание",
+      "next": "div:first"
+    }
+  ]
+}

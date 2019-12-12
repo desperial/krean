@@ -5,16 +5,19 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'request' => [
-          'baseUrl' => '',
-          ],
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'baseUrl' => '',
             'showScriptName' => false,
             'rules' => [
-            '' => 'site/index',
-            '<action>'=>'site/<action>',
-          ],
+                '' => 'site/index',
+                '<action>' => 'site/<action>',
+            ],
         ],
+
+    ],
+    'aliases' => [
+        '@uploads' => dirname(dirname(__DIR__)) . '/frontend/uploads/images/',
+        '@uploadsWeb' => '/frontend/uploads/images/',
     ],
 ];

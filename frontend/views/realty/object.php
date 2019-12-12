@@ -17,8 +17,8 @@ setlocale(LC_TIME,'ru_RU');
 				<ul>
 			<?php foreach ($item->photos as $photo) :?>
 				<li>
-					<a class="colorbox" rel="realty-photographies" href="/upload/overhill/realty/<?=$photo->filename?>" target="_blank">
-						<img src="/upload/overhill/realty/<?=$photo->filename?>" width="350" height="263" />
+					<a class="colorbox" rel="realty-photographies" href="<?=$photo->link?>" target="_blank">
+						<img src="<?=$photo->link?>" width="350" height="263" />
 					</a>
 				</li>
 			<? endforeach; ?>
@@ -36,12 +36,12 @@ setlocale(LC_TIME,'ru_RU');
 		</div>
 		<div class="seller-ads">
 			<div class="seller-ads-header">Продавец</div>
-			<div class="seller-ads-contact-name"><i class="fa fa-user"></i>&nbsp;&nbsp;<?=$item->users['name'];?></div>
-			<div class="seller-ads-contact-feedback"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="overhillRealty.service.feedback(this, <?=$item->id?>)">Связаться с продавцом</a></div>
+            <div class="seller-ads-contact-name"><i class="fa fa-user"></i>&nbsp;&nbsp;<a href="<?=$item->site_link?>"><?=$item->site;?></a></div>
+			<!--<div class="seller-ads-contact-feedback"><i class="fa fa-bullhorn"></i>&nbsp;&nbsp;<a href="javascript:void(0)" onclick="overhillRealty.service.feedback(this, <?=$item->id?>)">Связаться с продавцом</a></div>
 			<div class="seller-ads-contact-phone">
-				<a href="javascript:void(0)" onclick="overhillRealty.service.requestPhone(<?=$item->id?>, this)" title="Показать номер телефона продавца"><?=$item->users->contact_phone?></a>
-			</div>
-			<div class="seller-ads-note">Пожалуйста, сообщите продавцу,<br/>что нашли это объявление на Krean.ru</div>
+				<a href="javascript:void(0)" onclick="overhillRealty.service.requestPhone(<?=$item->id?>, this)" title="Показать номер телефона продавца"><?//=$item->users->contact_phone?></a>
+			</div>-->
+			<div class="seller-ads-note">Пожалуйста, сообщите продавцу,<br/>что нашли это объявление на Depala.ru</div>
 		</div>
 		<div class="google-streetview"></div>
 		<div class="similar-ads">
@@ -54,9 +54,9 @@ setlocale(LC_TIME,'ru_RU');
 	</div>
 	<div class="item-right">
 		<div class="item-header">
-			<div class="item-header-title"><?=$item['view']?>, <?=$item->countries['name'];?></div>
+			<div class="item-header-title"><?=$item->type?>, <?=$item->country;?></div>
 			<div class="item-header-address">
-				<a href="javascript:void(0)" onclick="overhillMap.to(<?=$item->latitude?>, <?=$item->longitude?>)" title="Показать на карте"><?=$item->address?></a>
+				<a href="javascript:void(0)" onclick="overhillMap.to(<?=$item->lat?>, <?=$item->lon?>)" title="Показать на карте"><?=$item->address?></a>
 			</div>
 		</div>
 		<div class="item-data">
@@ -66,7 +66,7 @@ setlocale(LC_TIME,'ru_RU');
 			<div class="item-data-list-right">
 				<div class="item-data-list-label"><?=number_format ($item->price,0,"."," ")?> 
 				<?php 
-					if ($item->currency == "RUR")
+					if ($item->currency == "RUB")
 						echo '<i class="fa fa-rub"></i>';
 					elseif ($item->currency == "EUR")
 						echo '<i class="fa fa-eur"></i>';
@@ -87,7 +87,7 @@ setlocale(LC_TIME,'ru_RU');
 			</div>
 			<div class="item-data-list-right">
 				<div class="item-data-list-label"><?=number_format($item->price / $item->area, 2, '.', ' ')?> <?php 
-					if ($item->currency == "RUR")
+					if ($item->currency == "RUB")
 						echo '<i class="fa fa-rub"></i>';
 					elseif ($item->currency == "EUR")
 						echo '<i class="fa fa-eur"></i>';
@@ -107,14 +107,7 @@ setlocale(LC_TIME,'ru_RU');
 				<div class="item-data-list-label">Тип объекта</div>
 			</div>
 			<div class="item-data-list-right">
-				<div class="item-data-list-label"><?=$item->view?></div>
-			</div>
-			<div class="clear"></div>
-			<div class="item-data-list-left">
-				<div class="item-data-list-label">Социальная группа объекта</div>
-			</div>
-			<div class="item-data-list-right">
-				<div class="item-data-list-label"><?=$item->group?></div>
+				<div class="item-data-list-label"><?=$item->type?></div>
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
@@ -125,20 +118,6 @@ setlocale(LC_TIME,'ru_RU');
 			</div>
 			<div class="clear"></div>
 			<div class="item-data-list-left">
-				<div class="item-data-list-label">Дата создания</div>
-			</div>
-			<div class="item-data-list-right">
-				<div class="item-data-list-label"><?=date("d.m.Y H:i", $item->create_timestamp );?></div>
-			</div>
-			<div class="clear"></div>
-			<div class="item-data-list-left">
-				<div class="item-data-list-label">Дата обновления</div>
-			</div>
-			<div class="item-data-list-right">
-				<div class="item-data-list-label"><?=$item->update_timestamp ? date("d.m.Y H:i", $item->update_timestamp ) : date("d.m.Y H:i", $item->create_timestamp );?></div>
-			</div>
-			<div class="clear"></div>
-			<div class="item-data-list-left">
 				<div class="item-data-list-label">Количество просмотров</div>
 			</div>
 			<div class="item-data-list-right">
@@ -146,7 +125,7 @@ setlocale(LC_TIME,'ru_RU');
 			</div>
 			<div class="clear"></div>
 		</div>
-		<div class="item-description"><?=$item->descriptions->description?></div>
+		<div class="item-description"><?=$item->description?></div>
 	</div>
 	<div class="clear"></div>
 </div>

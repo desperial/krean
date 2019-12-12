@@ -1,0 +1,197 @@
+{
+  "site": "mlsn.ru",
+  "parse_link": "mlsn.ru/pokupka-kommercheskaja-nedvizhimost/?page=",
+  "parse_shift": "1",
+  "link_prefix": "https:",
+  "parse_link_prefix": "https://",
+  "parse_listing": "page",
+  "object_selector": "script:contains('__INITIAL_STATE__')",
+  "is_list_json": true,
+  "select_json": "/window\\.__INITIAL_STATE__\\s*=\\s*(\\{.*\\})/",
+  "object_link_selector": "a.slider-container",
+  "add_site_to_object_link": false,
+  "image_selector": ".Gallery__item img.Image__cover",
+  "site_for": "rentatime",
+  "city_as_subdomain": true,
+  "city_addition": [
+    "adigea",
+    "altay",
+    "altkray",
+    "amur",
+    "arh",
+    "astrahan",
+    "brn",
+    "ufa",
+    "belgorod",
+    "bryansk",
+    "ulanude",
+    "vladimir",
+    "volgograd",
+    "vologda",
+    "vrn",
+    "dagestan",
+    "evreyskaya",
+    "zabaykalsk",
+    "ivanovo",
+    "ingush",
+    "irkutsk",
+    "kabardbalk",
+    "kazan",
+    "kaliningrad",
+    "kalmikiya",
+    "kaluga",
+    "nvkz",
+    "karachaevo",
+    "karelia",
+    "kemerovo",
+    "kirov",
+    "komi",
+    "kostroma",
+    "krasnodar",
+    "krasnodarkray",
+    "krs",
+    "krym",
+    "kurgan",
+    "kursk",
+    "lenobl",
+    "lipetsk",
+    "magadan",
+    "yoshkar-ola",
+    "modrdoviya",
+    "msk",
+    "mosobl",
+    "murmansk",
+    "nvrsk",
+    "nenetsk",
+    "nn",
+    "novgorod",
+    "nsk",
+    "nizhnevartovsk",
+    "omsk",
+    "orenburg",
+    "orel",
+    "penza",
+    "perm",
+    "vladivostok",
+    "pskov",
+    "rostov",
+    "ryazan",
+    "samara",
+    "sochi",
+    "spb",
+    "saratov",
+    "yakutia",
+    "sahalin",
+    "ekb",
+    "sevastopol",
+    "osetia",
+    "smolensk",
+    "stavropol",
+    "surgut",
+    "tambov",
+    "tatarstan",
+    "tver",
+    "tomsk",
+    "tula",
+    "tiva",
+    "tmn",
+    "izh",
+    "ul",
+    "habarovsk",
+    "hakasia",
+    "hanti",
+    "chelyabinsk",
+    "chechnya",
+    "chuvash",
+    "chuk",
+    "yamalonenetsk",
+    "yaroslavl"
+  ],
+  "fields": [
+    {
+      "field": "site_link",
+      "prop": "uri"
+    },
+    {
+      "field": "site_id",
+      "prop": "path"
+    },
+    {
+      "field": "price",
+      "prop": "price",
+      "conversion": [
+        "spaces",
+        "intval"
+      ]
+    },
+    {
+      "field": "area",
+      "prop": "squareTotal",
+      "conversion": [
+        "spaces",
+        "floatval"
+      ]
+    },
+    {
+      "field": "lat",
+      "prop": [
+        "location",
+        "lonLat"
+      ],
+      "conversion": [
+        "array"
+      ],
+      "match": 1
+    },
+    {
+      "field": "lon",
+      "prop": [
+        "location",
+        "lonLat"
+      ],
+      "conversion": [
+        "array"
+      ],
+      "match": 0
+    },
+    {
+      "field": "address",
+      "prop": "location",
+      "conversion": [
+        "mlsn_address"
+      ]
+    },
+    {
+      "field": "type",
+      "prop": "objectTypeId",
+      "dictionary": "objectType_",
+      "conversion": [
+        "trim",
+        "type_normalization"
+      ]
+    },
+    {
+      "field": "description",
+      "prop": "description"
+    },
+    {
+      "field": "country",
+      "fixed": "Россия",
+      "parse_tag": false
+    },
+    {
+      "field": "currency",
+      "fixed": "RUB",
+      "parse_tag": false
+    },
+    {
+      "field": "phone",
+      "prop": "contactPhones",
+      "conversion": [
+        "array",
+        "mlsn_phone"
+      ],
+      "match": 0
+    }
+  ]
+}

@@ -24,7 +24,7 @@ var markerIcon = new google.maps.MarkerImage('js/map/marker.png?v3', new google.
 var realty = new (function()
 {
 	var self = this;
-	
+
 	this.getById = function(id)
 	{
 		$('.overhill-ad-container').addClass('on-background-process');
@@ -43,13 +43,13 @@ var realty = new (function()
 	};
 
 	this.vip = {};
-	
+
 	this.vip.unload = function(container)
 	{
 		container = $(container);
-		
+
 		var count = 0;
-		
+
 		var unloader = function()
 		{
 			// С момента последней активности посетителя должно пройти не более одной минуты
@@ -60,7 +60,7 @@ var realty = new (function()
 				{
 					// Расчет количества выгружаемых привилегированных объявлений которые могут поместиться в контейнере
 					count = Math.floor(container.width() / (180 + 10));
-					
+
 					// Необходимость выгрузки привилегированных объявлений
 					if (count > 0)
 					{
@@ -68,16 +68,16 @@ var realty = new (function()
 						$.get('/realty/vip', {count:count}, function(ads)
 						{
 							container.empty();
-							
+
 							container.append(ads);
 						});
 					}
 				}
 			}
 		};
-		
+
 		unloader();
-		
+
 		var updater = setInterval(unloader, 20000);
 	};
 });
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	$.ajax({
 	    url:"/realty/coords"
 	}).done(function(data){
-		var location = $.parseJSON(data); 
+		/*var location = $.parseJSON(data);
 		var locations = location.obj;
 	   	overhillMap.init();
 
@@ -109,6 +109,6 @@ $(document).ready(function(){
 			return marker;
         });
 	   	var markerCluster = new MarkerClusterer(overhillMap.getMap(), markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});*/
 	});
 });

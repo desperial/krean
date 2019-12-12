@@ -1,0 +1,127 @@
+{
+  "site": "prian.ru",
+  "parse_link": "https://prian.ru/search/?next=",
+  "parse_shift": "16",
+  "parse_to": "4999",
+  "link_prefix": "https:",
+  "parse_listing": "item",
+  "object_selector": ".list_object.list_inline",
+  "object_link_selector": ".spec_item",
+  "object_link_selector2": ".extra_item",
+  "add_site_to_object_link": false,
+  "image_selector": ".c-slider__to-modal>img",
+  "site_for": "depala",
+  "fields": [
+    {
+      "field": "price",
+      "parse_cond": "Цена продажи",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "spaces",
+        "intval"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "currency",
+      "parse_cond": "Цена продажи",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "currency"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "area",
+      "parse_cond": "Площадь",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "spaces",
+        "floatval"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "rooms",
+      "parse_cond": "Всего комнат",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "spaces",
+        "intval"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "floor",
+      "parse_cond": "Этаж",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "spaces",
+        "intval"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "floors",
+      "parse_cond": "Этажность",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "spaces",
+        "intval"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "address",
+      "parse_cond": "Адрес",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "trim",
+        "inner_spaces"
+      ],
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "lat",
+      "parse_cond": "var lat",
+      "parse_tag": "script",
+      "conversion": [
+        "lat"
+      ]
+    },
+    {
+      "field": "lon",
+      "parse_cond": "var lat",
+      "parse_tag": "script",
+      "conversion": [
+        "lon"
+      ]
+    },
+    {
+      "field": "country",
+      "parse_cond": "Адрес",
+      "parse_tag": "tr.c-params__row>td.c-params__key",
+      "conversion": [
+        "explode",
+        "trim"
+      ],
+      "delimiter": "/(,)/",
+      "position": 0,
+      "next": "td.c-params__value"
+    },
+    {
+      "field": "type",
+      "parse_tag": "h1.c-header__title",
+      "conversion": [
+        "explode",
+        "trim"
+      ],
+      "delimiter": "\/(\\sв\\s)|(\\sна\\s)|(\\sу\\s)\/",
+      "position": 0
+    },
+    {
+      "field": "description",
+      "parse_tag": ".c-block__content.c-description"
+    }
+  ]
+}

@@ -17,15 +17,17 @@ AppAsset::register($this);
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, scale=0.5">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
+<div id="page-loader" style="display: none;">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>
 <?php $this->beginBody() ?>
-
-    <div class="overhill-header">
+    <!--<div class="overhill-header">
         <div class="overhill-header-left">
             <div class="logo">
                 <a href="javascript:void(0)" onclick="overhill.reload()"></a>
@@ -35,7 +37,6 @@ AppAsset::register($this);
                     <li>
                         <span><i class="fa fa-bars"></i></span>
                         <ul>
-                            <li><a href="http://forum.krean.ru/" target="_blank">Наш форум</a></li>
                             <li><a href="javascript:void(0)" onclick="overhillPage.open(4)">Платные услуги</a></li>
                             <li><a href="javascript:void(0)" onclick="overhillPage.open(3)">О нас</a></li>
                             <li><a href="javascript:void(0)" onclick="overhillPage.open(2)">Контакты</a></li>
@@ -47,19 +48,10 @@ AppAsset::register($this);
                     <li>
                         <span>Валюта</span>
                         <ul>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('RUR')">RUR (Российский рубль)</a></li>
+                            <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('RUB')">RUR (Российский рубль)</a></li>
                             <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('USD')">USD (Американский доллар)</a></li>
                             <li><a href="javascript:void(0)" onclick="overhill.user.setCurrency('EUR')">EUR (Евро)</a></li>
                         </ul>
-                    </li>
-                <li>
-                    <span>Страны</span>
-                        <div class="menu-countries">
-                            <div class="menu-countries-items" id="overhill-countries"></div>
-                            <div class="menu-countries-prompt">
-                                <span>Хотите получить больше информации о интересующей вас стране? Просто кликните по ней на карте мира, и сервис быстро выдаст вам всю доступную информацию о стране!</span>
-                            </div>
-                        </div>
                     </li>
                     <li>
                         <a href="/articles/"><span>Статьи</span></a>
@@ -72,34 +64,21 @@ AppAsset::register($this);
             <div class="menu">
                 <ul>
                     <li style="display: none"><a href="javascript:void(0)" onclick="overhillRealty.service.callback(this)">Обратный звонок</a></li>
-                    <li><a href="javascript:void(0)" onclick="overhill.realty.create()">Подать объявление</a></li>
-                    <?php if (!Yii::$app->user->isGuest) : ?>
-                    <li>
-                        <span>Личный кабинет</span>
-                        <ul>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.cabinet()">Открыть личный кабинет</a></li>
-                            <li><a href="javascript:void(0)" onclick="overhill.realty.getByAutor(<?=$model->getUserID()?>)">Список моих объявлений</a></li>
-                            <li><a href="javascript:void(0)" onclick="overhill.user.logout()">Выйти</a></li>
-                        </ul>
-                    </li>
-                    <?php else : ?>
-                    <li><a href="javascript:void(0)" onclick="overhill.user.signIn()">Вход для продавцов</a></li>
-                    <?php endif; ?>
                     <li><a href="javascript:void(0)" onclick="overhill.callBackHunterInit()"><img calss="callback" src="/imgs/phone-512-1.png" width="50" height="50" style="margin-top:0px;"></a></li>
                 </ul>
             </div>
             <div class="phone">
-                <span>+7 (346) 222-98-08</span>
+                <span>+7 (346) 2XX-XX-XX</span>
             </div>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
-    </div>
+    </div>-->
     <?= $content ?>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Depala.ru <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
