@@ -847,7 +847,6 @@ class ParserInstance
 
     private function writeData($vars)
     {
-        var_dump($vars);die;
         if ($this->debug) {
             print_r($vars);
             return false;
