@@ -961,7 +961,7 @@ class ParserInstance
         $site_name = explode(".",$this->site);
         $site_name = $site_name[count($site_name)-1];
         foreach ($images as $key=>$image) {
-            $img_name = Parser::getImage($image,$site_name."_".$site_id."_".$key) ?: null;
+            $img_name = Parser::getImage((property_exists($this->parser,"image_src_prefix") ? $this->parser->image_src_prefix : ""). $image,$site_name."_".$site_id."_".$key) ?: null;
             if (!$photo = Photo::getByPath($img_name)) {
                 $photo = new Photo();
                 $photo->realty = $id;

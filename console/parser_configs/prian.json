@@ -11,6 +11,7 @@
   "add_site_to_object_link": false,
   "image_selector": "#imageGallery img",
   "image_src_attr": "data-src",
+  "image_src_prefix": "https:",
   "site_for": "depala",
   "fields": [
     {
