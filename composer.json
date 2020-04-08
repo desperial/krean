@@ -21,7 +21,8 @@
         "rmrevin/yii2-fontawesome": "~2.17",
         "himiklab/yii2-colorbox-widget": "dev-master",
         "yiisoft/yii2-imagine": "^2.0@dev",
-        "electrolinux/phpquery": "*"
+        "electrolinux/phpquery": "*",
+        "c006/yii2-migration-utility": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

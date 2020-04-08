@@ -20,4 +20,9 @@ return [
         '@uploads' => dirname(dirname(__DIR__)) . '/frontend/uploads/images/',
         '@uploadsWeb' => '/frontend/uploads/images/',
     ],
+    'modules' => [
+        'utility' => [
+            'class' => 'c006\utility\migration\Module',
+        ],
+    ],
 ];

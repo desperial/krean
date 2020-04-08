@@ -686,7 +686,7 @@ class ParserInstance
                 case 'lat':
                     preg_match("/(var lat = parseFloat\(\"?([0-9\.-]+)\"\))/",
                         $value, $matches);
-                    $value = $matches[2];
+                    $value = array_key_exists(2,$matches) ? $matches[2] : null;
                     break;
                 case 'lon':
                     preg_match("/(var lng = parseFloat\(\"?([0-9\.-]+)\"\))/",
