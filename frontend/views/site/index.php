@@ -106,8 +106,7 @@ $this->title = 'Depala.ru - вся зарубежная недвижимость
             <button type="button" class="close" data-modal-id="#map-modal" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <h4 class="modal-title" id="map-modal-title">Бунгало, Кипр, какой-то регион (Карта будет показывать конкретный объект, а не все
-                вперемешку, как сейчас) </h4>
+            <h4 class="modal-title" id="map-modal-title"> </h4>
         </div>
         <div class="modal-body">
             <div id="overhill-map"></div>

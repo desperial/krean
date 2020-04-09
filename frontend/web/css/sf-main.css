@@ -15,15 +15,18 @@
         top: 0;
     }
 }
-@keyframes searchToTop{
+
+@keyframes searchToTop {
     100% {
         margin-top: 10px !important;
     }
 }
+
 .pagination-wrap {
     margin: 0 auto;
     text-align: center;
 }
+
 .sf-main-wrap {
     width: 100vw;
     min-height: 100vh;
@@ -33,7 +36,8 @@
     top: 0;
     left: 0;
 }
-.sf-center-content .site-name{
+
+.sf-center-content .site-name {
     position: relative;
     text-align: center;
     margin: 0 auto;
@@ -41,15 +45,18 @@
     color: #47a447;
     animation: slideInDown 1s ease-out;
 }
+
 .site-name a, .site-name a:visited {
     text-decoration: none;
     color: #47a447;
 
 }
+
 .sf-center-content h3 {
     text-align: center;
     margin: 0 auto;
 }
+
 .search-block {
     display: grid;
     flex-wrap: wrap;
@@ -58,56 +65,69 @@
     grid-gap: 10px;
     grid-template-rows: 60px 100px;
 }
+
 .mat-input {
     color: white;
 }
+
 .mat-input:focus {
     color: #47a447;
 }
+
 .sf-overlay {
     width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(20,20,20, 0.5);
+    background: rgba(20, 20, 20, 0.5);
     overflow-x: scroll;
 }
+
 .country-wrap, .type-wrap {
     width: 100%;
 }
+
 @media only screen and (max-width: 767px) {
     .sf-center-content {
         margin: 200px 10px 10px 10px;
     }
+
     .search-block {
         max-width: 100%;
         padding: 10px;
     }
+
     #realty-wrap {
         width: 100%;
         padding: 15px 20px 30px 20px;
         border-radius: 30px;
-        background: rgba(20,20,20, 0.5);
+        background: rgba(20, 20, 20, 0.5);
         margin: 20px auto 120px auto;
     }
+
     .realty-photo img {
         object-fit: cover;
         min-height: 160px;
         max-height: 230px;
         min-width: 100%;
     }
+
     .realty-item {
         width: 100%;
         margin-top: 5px;
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-columns: 100px 1fr;
-        grid-template-rows: auto 1fr 35px;
     }
+
+    .realty-item img.disclaimer-image {
+        height: 200px;
+        min-width: 100%;
+        object-fit: cover;
+    }
+
     .realty-name, .realty-price {
         font-size: 14pt;
     }
+
     .realty-params-block {
         font-size: 10pt;
     }
@@ -120,73 +140,84 @@
         margin: 20vh auto 0 auto;
         padding: 0 20px 30px 20px;
         border-radius: 30px;
-        background: rgba(20,20,20, 0.5);
+        background: rgba(20, 20, 20, 0.5);
     }
+
     .search-block {
         max-width: 100vw;
     }
+
     .sf-main-wrap {
         background: url(/imgs/maxresdefault.jpg);
         background-size: cover;
     }
+
     .search-totop {
         animation: searchToTop 1s ease-out;
     }
+
     #realty-wrap {
         width: 50vw;
         padding: 15px 20px 30px 20px;
         border-radius: 30px;
-        background: rgba(20,20,20, 0.5);
+        background: rgba(20, 20, 20, 0.5);
         margin: 20px auto 20px auto;
     }
+
     .realty-photo img {
         object-fit: cover;
         min-height: 190px;
         max-height: 243px;
         min-width: 100%;
     }
+
     .realty-item {
-        width: 100%;
         margin-top: 5px;
-        display: grid;
-        grid-column-gap: 10px;
-        grid-template-columns: 300px 1fr;
-        grid-template-rows: auto 1fr 35px;
     }
+
+    .realty-item img.disclaimer-image {
+        height: 120px;
+        min-width: 100%;
+        object-fit: cover;
+    }
+
     .realty-name, .realty-price {
         font-size: 18pt;
     }
+
     .realty-params-block {
-        font-size: 14pt;
+        font-size: 10pt;
     }
 
 }
-@media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
-only screen and (-o-min-device-pixel-ratio: 13/10),
-only screen and (min-resolution: 120dpi)
-{
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi) {
     #realty-wrap {
         width: 90vw !important;
         padding: 15px 20px 30px 20px;
         border-radius: 30px;
-        background: rgba(20,20,20, 0.5);
+        background: rgba(20, 20, 20, 0.5);
         margin: 20px auto 20px auto;
     }
+
     .sf-center-content {
         width: 90vw;
         margin: 20vh auto 0 auto;
         padding: 0 20px 30px 20px;
         border-radius: 30px;
-        background: rgba(20,20,20, 0.5);
+        background: rgba(20, 20, 20, 0.5);
     }
+
     /* Your code to swap higher DPI images */
 }
+
 #realty-wrap {
     display: none;
     opacity: 0;
     position: relative;
     top: 100%;
 }
+
 .search-button {
     width: 100%;
 }
@@ -194,13 +225,16 @@ only screen and (min-resolution: 120dpi)
 .search-button button {
     width: 100%;
 }
+
 .search-ads-field-price .mat-div, .search-ads-field-area .mat-div {
     width: 50%;
 }
+
 .two-fields-wrap {
     display: inline-flex;
     width: 100%;
 }
+
 .sf-position-center {
     margin-left: auto;
     margin-right: auto;
@@ -211,6 +245,7 @@ only screen and (min-resolution: 120dpi)
 .realty-name, .realty-price {
     color: #4cae4c;
 }
+
 .realty-photo {
     grid-row-start: 1;
     grid-row-end: row3-end;
@@ -219,41 +254,54 @@ only screen and (min-resolution: 120dpi)
 
 .realty-params {
     margin-left: 10px;
-    width: 100%;
-    grid-column: 2;
 }
 
 .realty-name {
     cursor: pointer;
 }
+
 .top-realty-row {
     grid-column: 2;
     display: grid;
     grid-template-columns: 1fr auto;
     grid-template-rows: 1fr;
 }
+
 .realty-price {
     color: #47a447;
     float: right;
 }
-.realty-params-block {
-    display: grid;
-    margin-top: 10px;
-    grid-template-columns: 60% 40%;
-    grid-column-gap: 10px;
-}
+
 .realty-params-left, .realty-params-right {
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    grid-column-gap: 50px;
 }
+
 .realty-param {
     text-align: right;
 }
+
 .realty-value a, .realty-prices a {
     text-decoration: none;
     color: #4cae4c;
 }
+
+.pl-0 {
+    padding-left: 0 !important;
+}
+
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.mx-0 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 .realty-params-end {
     margin-top: 5px;
     min-height: 2px;
@@ -262,25 +310,30 @@ only screen and (min-resolution: 120dpi)
     width: 100%;
     border-bottom: 2px solid rgba(71, 164, 71, 0.5);
 }
+
 .bottom-realty-row {
     width: 100%;
     grid-column: 2;
     grid-column-start: 2;
     grid-column-end: 2;
 }
+
 .realty-more-info {
     width: 100%;
 }
+
 .realty-additional-info {
     grid-column-start: 1;
     grid-column-end: line3;
     display: none;
 }
+
 .realty-additional-info-grid {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-column-gap: 10px;
 }
+
 .realty-prices {
     font-size: 14pt;
     display: grid;
@@ -288,18 +341,22 @@ only screen and (min-resolution: 120dpi)
     grid-template-columns: 50% 50%;
 
 }
+
 .clear {
     clear: both;
 }
+
 #overhill-map {
     position: relative !important;
     max-height: 60vh;
     background: none !important;
 }
+
 #map-modal {
     width: 70vw;
     overflow: hidden;
 }
+
 /*endregion*/
 
 /*region loader*/
@@ -310,17 +367,19 @@ only screen and (min-resolution: 120dpi)
     position: fixed;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10012;
 }
+
 .lds-ring {
     display: inline-block;
     position: absolute;
     width: 64px;
     height: 64px;
     top: 48%;
-    left:48%;
+    left: 48%;
 }
+
 .lds-ring div {
     box-sizing: border-box;
     display: block;
@@ -333,15 +392,19 @@ only screen and (min-resolution: 120dpi)
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #47a447 transparent transparent transparent;
 }
+
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
+
 .lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
+
 .lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
+
 @keyframes lds-ring {
     0% {
         transform: rotate(0deg);
@@ -350,4 +413,5 @@ only screen and (min-resolution: 120dpi)
         transform: rotate(360deg);
     }
 }
+
 /*endregion*/
