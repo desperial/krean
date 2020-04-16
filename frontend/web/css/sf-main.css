@@ -58,12 +58,7 @@
 }
 
 .search-block {
-    display: grid;
-    flex-wrap: wrap;
-    margin: 40px auto 0 auto;
-    grid-template-columns: 50% 50%;
-    grid-gap: 10px;
-    grid-template-rows: 60px 100px;
+
 }
 
 .mat-input {
@@ -113,6 +108,9 @@
         min-width: 100%;
     }
 
+    site-name {
+        font-size: 4rem !important;
+    }
     .realty-item {
         width: 100%;
         margin-top: 5px;
@@ -125,11 +123,20 @@
     }
 
     .realty-name, .realty-price {
-        font-size: 14pt;
+        font-size: 18pt;
     }
 
+    .realty-more-info {
+        font-size: 20pt;
+    }
     .realty-params-block {
-        font-size: 14pt;
+        font-size: 18pt;
+    }
+    .mat-label, .mat-div input, .mat-div select, .search-ads-legend, .btn-success, .realty-description, .realty-prices, .realty-site, .realty-price-site {
+        font-size: 3rem;
+    }
+    .mat-div.is-active .mat-label, .mat-div.is-completed .mat-label{
+        font-size: 2rem;
     }
 
 }
@@ -329,9 +336,7 @@
 }
 
 .realty-additional-info-grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-column-gap: 10px;
+
 }
 
 .realty-prices {

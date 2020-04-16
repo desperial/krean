@@ -1,7 +1,6 @@
 <?
 
 use yii\widgets\LinkPager;
-
 ?>
 <? foreach ($realty as $item) : ?>
     <div class="row realty-item">
@@ -65,11 +64,11 @@ use yii\widgets\LinkPager;
         </div>
         <div class="realty-additional-info">
             <div class="realty-params-end"></div>
-            <div class="realty-additional-info-grid">
-                <div class="realty-description">
+            <div class="realty-additional-info-grid row">
+                <div class="realty-description col-xs-12 col-sm-6">
                     <?= $item->description ?>
                 </div>
-                <div class="realty-prices">
+                <div class="realty-prices col-xs-12 col-sm-6">
                     <div class="realty-site"><a href="<?= $item->site_link ?>"><?= $item->site ?></a></div>
                     <div class="realty-price-site"><?= number_format($item->price, 0, ".", " ") . " " . $currency ?></div>
 
