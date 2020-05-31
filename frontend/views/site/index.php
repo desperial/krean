@@ -13,7 +13,7 @@ $this->title = 'Depala.ru - вся зарубежная недвижимость
             <form id="realty-search-form" method="get" action="<?= \yii\helpers\Url::to(['realty/list']) ?>">
                 <div class="site-name"><a href="<?=\yii\helpers\Url::base(true)?>">Depala.ru</a></div>
                 <h3 class="site-title">агрегатор зарубежной недвижимости</h3>
-                <h3 class=""><a href="<?=\yii\helpers\Url::to(['/site/contact'])?>" style="color: white; font-weight: bolder; font-size: 3rem">Добавление объектов - бесплатно!</a></h3>
+                <h3 class=""><a href="https://m2rent.ru/about>" style="color: white; font-weight: bolder; font-size: 3rem">Добавление объектов - бесплатно!</a></h3>
                 <div class="search-block row">
                     <div class="mat-div country-wrap col-xs-12 col-sm-6">
                         <label for="search-ads-container-for-counties" class="mat-label">Страна</label>
